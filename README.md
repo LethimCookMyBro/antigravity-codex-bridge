@@ -1,12 +1,46 @@
 # Antigravity Codex Bridge
 
-> Antigravity-inspired skills, agents, and workflows packaged for OpenAI Codex.
+Antigravity-inspired skills, agents, and workflows packaged for OpenAI Codex.
 
-This repository turns the Antigravity workflow style into a Codex-friendly, repo-local `.agents` package that can be installed into any project and used as Codex skills.
+This repository installs a portable `.agents` bundle into any project so Codex can discover the same workflows, specialist agents, and support scripts locally.
 
-## Quick Install
+## What This Is
 
-After publishing this package to npm:
+- A Codex-first package for repo-local skills and agents
+- A small CLI that installs `.agents` into a target project
+- A bridge for Antigravity-style workflows such as `$brainstorm`, `$debug`, `$plan`, and `$create`
+
+## Important Note
+
+This package is for Codex skills, not Antigravity slash commands.
+
+- Use `$brainstorm`, `$debug`, `$plan`, `$create`, `$clean-code`, and similar skills
+- Do not expect custom `/brainstorm` or `/debug` commands in Codex
+- Keep the `.agents/` folder in the project root so Codex can discover it
+
+## Quick Start
+
+Until this package is published to npm, use the local CLI.
+
+From this repository:
+
+```bash
+node ./bin/ag-codex.js init --path ../my-project
+```
+
+From the target project when this repo is next to it:
+
+```bash
+node ../antigravity-codex-bridge/bin/ag-codex.js init --path .
+```
+
+Windows `cmd` example:
+
+```bat
+node "..\antigravity-codex-bridge\bin\ag-codex.js" init --path .
+```
+
+After npm publish:
 
 ```bash
 npx antigravity-codex-bridge init
@@ -19,52 +53,9 @@ npm install -g antigravity-codex-bridge
 ag-codex init
 ```
 
-## Local Development
+## After Install
 
-This package is not published to npm yet, so use the local CLI for now.
-
-Run from the cloned repository:
-
-```bash
-node ./bin/ag-codex.js init --path ../my-project
-```
-
-If you are already inside the target project and this repo is next to it:
-
-```bash
-node ../antigravity-codex-bridge/bin/ag-codex.js init --path .
-```
-
-Windows `cmd` example:
-
-```bat
-node "..\antigravity-codex-bridge\bin\ag-codex.js" init --path .
-```
-
-Then open the target project in VS Code with Codex enabled and reload skills.
-
-## Important Note
-
-This package is built for **Codex skills**, not Antigravity slash commands.
-
-- Use `$brainstorm`, `$debug`, `$plan`, `$create`, `$clean-code`, etc.
-- Do not expect custom `/brainstorm` or `/debug` slash commands in Codex.
-- Keep the `.agents/` folder in the project root so Codex can discover the skills.
-
-## What's Included
-
-| Component | Count | Description |
-|----------|------:|-------------|
-| **Agents** | 20 | Specialist prompts for planning, frontend, backend, security, QA, DevOps, and more |
-| **Skills** | 48 | Codex-ready skills adapted from Antigravity and expanded for Codex usage |
-| **Workflows** | 11 | Command-style workflow documents mapped into Codex skill behavior |
-| **Scripts** | 4 | Shared helper scripts for preview, verification, checklists, and status |
-
-## Usage
-
-After installing `.agents` into your project:
-
-1. Open the project in VS Code.
+1. Open the target project in VS Code.
 2. Switch to the `CODEX` tab.
 3. Reload the window or run `Force reload skills`.
 4. Invoke skills with `$`.
@@ -80,78 +71,47 @@ $clean-code review this module before shipping
 $ui-ux-pro-max redesign the homepage
 ```
 
-## CLI Commands
+## CLI
 
 | Command | Description |
 |---------|-------------|
 | `ag-codex init` | Install `.agents` into the current project |
 | `ag-codex init --path ./my-project` | Install into a specific directory |
 | `ag-codex update` | Reinstall and overwrite the existing `.agents` folder |
-| `ag-codex status` | Show whether `.agents` is installed and count its contents |
+| `ag-codex status` | Show whether `.agents` is installed and summarize its contents |
 
-## Core Command Skills
+## What's Included
 
-These Antigravity-style workflow skills are included:
+| Component | Count | Description |
+|----------|------:|-------------|
+| **Agents** | 20 | Specialist prompts for planning, frontend, backend, security, QA, DevOps, and more |
+| **Skills** | 48 | Codex-ready skills adapted from Antigravity and expanded for Codex usage |
+| **Workflows** | 11 | Task entrypoints such as `brainstorm`, `debug`, `plan`, and `test` |
+| **Scripts** | 4 | Shared helpers for preview, verification, checklist, and session tasks |
 
-| Skill | Description |
-|-------|-------------|
-| `$brainstorm` | Structured exploration before implementation |
-| `$create` | Start a new app or feature build |
-| `$debug` | Systematic debugging and root-cause analysis |
-| `$deploy` | Pre-flight checks and deployment flow |
-| `$enhance` | Improve an existing project or feature |
-| `$orchestrate` | Multi-agent coordination for complex tasks |
-| `$plan` | Planning-only workflow |
-| `$preview` | Local preview management |
-| `$status` | Project and workflow status |
-| `$test` | Test generation and execution flow |
-| `$ui-ux-pro-max` | Design-heavy UI workflow with design system support |
+Highlighted workflow skills:
 
-## Top-Level Skills
+- `$brainstorm`
+- `$create`
+- `$debug`
+- `$deploy`
+- `$enhance`
+- `$orchestrate`
+- `$plan`
+- `$preview`
+- `$status`
+- `$test`
+- `$ui-ux-pro-max`
 
-This bridge also includes domain skills from the Antigravity ecosystem, including:
+## Repository Docs
 
-- `api-patterns`
-- `app-builder`
-- `architecture`
-- `bash-linux`
-- `behavioral-modes`
-- `brainstorming`
-- `clean-code`
-- `database-design`
-- `documentation-templates`
-- `frontend-design`
-- `game-development`
-- `geo-fundamentals`
-- `i18n-localization`
-- `intelligent-routing`
-- `lint-and-validate`
-- `mcp-builder`
-- `mobile-design`
-- `nodejs-best-practices`
-- `parallel-agents`
-- `performance-profiling`
-- `plan-writing`
-- `powershell-windows`
-- `python-patterns`
-- `react-best-practices`
-- `red-team-tactics`
-- `rust-pro`
-- `seo-fundamentals`
-- `server-management`
-- `systematic-debugging`
-- `tailwind-patterns`
-- `tdd-workflow`
-- `testing-patterns`
-- `vulnerability-scanner`
-- `web-design-guidelines`
-- `webapp-testing`
+- [Agent Flow Architecture](./AGENT_FLOW.md)
 
-## What Should Be Pushed
+## Publish Scope
 
-This repository is intended to publish the portable Codex package only.
+This repository is meant to ship the portable Codex package only.
 
-Push these files:
+Include:
 
 - `.agents/`
 - `bin/`
@@ -162,24 +122,11 @@ Push these files:
 - `README(th).md`
 - `package.json`
 
-Do not push these local-only compatibility layers:
+Do not include local-only compatibility layers:
 
 - `.agent/`
 - `plugins/antigravity/`
 - `.agents/plugins/`
-
-## Repository Goal
-
-The goal is to ship a clean Codex-first package:
-
-- no duplicate `.agent` and `.agents` trees in the published repo
-- no local plugin bridge required for end users
-- no dependency on hidden workspace-only paths
-- just a portable `.agents` folder plus a tiny installer CLI
-
-## Credits
-
-Inspired by the original Antigravity Kit workflow system and adapted for Codex-first usage.
 
 ## License
 
