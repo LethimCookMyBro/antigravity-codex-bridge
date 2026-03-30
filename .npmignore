@@ -1,0 +1,7 @@
+.agent/
+plugins/
+.agents/plugins/
+**/__pycache__/
+design-system/
+*.log
+*.pid

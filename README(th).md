@@ -2,27 +2,35 @@
 
 > ชุด skills, agents และ workflows สไตล์ Antigravity ที่แพ็กมาให้ใช้กับ OpenAI Codex
 
-โปรเจกต์นี้ทำขึ้นเพื่อแปลงแนวคิดของ Antigravity Kit ให้อยู่ในรูปแบบที่ **Codex ใช้งานได้จริงผ่านโฟลเดอร์ `.agents`** และสามารถยกไปใช้ต่อในโปรเจกต์อื่นได้ง่าย
+โปรเจกต์นี้ทำขึ้นเพื่อแปลงแนวคิดของ Antigravity Kit ให้อยู่ในรูปแบบที่ **Codex ใช้งานได้จริงผ่านโฟลเดอร์ `.agents`** และสามารถติดตั้งไปใช้ในโปรเจกต์อื่นได้ง่าย
 
 ## ติดตั้งแบบเร็ว
 
-โคลน repository:
+หลังจาก publish package นี้ขึ้น npm แล้ว สามารถติดตั้งแบบง่ายได้เลย:
 
 ```bash
-git clone https://github.com/LethimCookMyBro/antigravity-codex-bridge.git
-cd antigravity-codex-bridge
+npx antigravity-codex-bridge init
 ```
 
-ถ้าต้องการเอาไปใช้กับโปรเจกต์อื่น ให้คัดลอกโฟลเดอร์ `.agents` ไปไว้ที่ root ของโปรเจกต์นั้น:
+หรือติดตั้งแบบ global:
 
 ```bash
-cp -r .agents /path/to/your-project/
+npm install -g antigravity-codex-bridge
+ag-codex init
 ```
 
-ถ้าใช้ Windows PowerShell:
+ถ้าต้องการระบุ path:
 
-```powershell
-Copy-Item -Recurse .agents C:\path\to\your-project\.agents
+```bash
+npx antigravity-codex-bridge init --path ./my-project
+```
+
+### ใช้งานจาก repo นี้โดยตรง
+
+ถ้ายังไม่ได้ publish npm แต่ต้องการลองใช้จาก repo นี้ก่อน:
+
+```bash
+node ./bin/ag-codex.js init --path /path/to/your-project
 ```
 
 จากนั้นเปิดโปรเจกต์ใน VS Code ที่มี Codex แล้วสั่ง reload skills
@@ -46,7 +54,7 @@ repo นี้ออกแบบมาสำหรับ **Codex skills** ไม
 
 ## วิธีใช้งาน
 
-หลังจากคัดลอก `.agents` ไปไว้ในโปรเจกต์แล้ว:
+หลังจากติดตั้ง `.agents` เข้าโปรเจกต์แล้ว:
 
 1. เปิดโปรเจกต์ใน VS Code
 2. ไปที่แท็บ `CODEX`
@@ -63,6 +71,15 @@ $plan ย้ายระบบจาก REST ไป tRPC
 $clean-code รีวิวโมดูลนี้ก่อนปล่อยจริง
 $ui-ux-pro-max รีดีไซน์หน้า homepage
 ```
+
+## คำสั่ง CLI
+
+| คำสั่ง | ใช้ทำอะไร |
+|--------|------------|
+| `ag-codex init` | ติดตั้ง `.agents` ลงในโปรเจกต์ปัจจุบัน |
+| `ag-codex init --path ./my-project` | ติดตั้งลงใน path ที่ระบุ |
+| `ag-codex update` | ติดตั้งซ้ำและเขียนทับ `.agents` เดิม |
+| `ag-codex status` | เช็กว่าติดตั้ง `.agents` แล้วหรือยัง พร้อมสรุปจำนวนไฟล์หลัก |
 
 ## Command Skills หลัก
 
@@ -129,10 +146,13 @@ repo นี้ตั้งใจให้ publish เฉพาะแพ็ก Co
 ควร push:
 
 - `.agents/`
+- `bin/`
 - `.gitignore`
+- `.npmignore`
 - `LICENSE`
 - `README.md`
 - `README(th).md`
+- `package.json`
 
 ไม่ควร push:
 
@@ -147,7 +167,7 @@ repo นี้ตั้งใจให้ publish เฉพาะแพ็ก Co
 - ไม่มี `.agent` กับ `.agents` ซ้ำกันใน repo ที่ publish
 - ไม่ต้องพึ่ง local plugin bridge
 - ไม่อ้าง path ภายในเครื่องแบบซ่อนๆ
-- เหลือเพียง `.agents` ที่พร้อมใช้กับ Codex
+- เหลือเพียง `.agents` พร้อมตัวติดตั้ง CLI ขนาดเล็ก
 
 ## เครดิต
 

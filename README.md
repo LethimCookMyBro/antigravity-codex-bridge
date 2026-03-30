@@ -2,27 +2,35 @@
 
 > Antigravity-inspired skills, agents, and workflows packaged for OpenAI Codex.
 
-This repository turns the Antigravity workflow style into a Codex-friendly, repo-local `.agents` package that can be copied into any project and used as Codex skills.
+This repository turns the Antigravity workflow style into a Codex-friendly, repo-local `.agents` package that can be installed into any project and used as Codex skills.
 
 ## Quick Install
 
-Clone the repository:
+After publishing this package to npm:
 
 ```bash
-git clone https://github.com/LethimCookMyBro/antigravity-codex-bridge.git
-cd antigravity-codex-bridge
+npx antigravity-codex-bridge init
 ```
 
-To use it in another project, copy the `.agents` folder into that project's root:
+Or install globally:
 
 ```bash
-cp -r .agents /path/to/your-project/
+npm install -g antigravity-codex-bridge
+ag-codex init
 ```
 
-Windows PowerShell:
+Install into a specific path:
 
-```powershell
-Copy-Item -Recurse .agents C:\path\to\your-project\.agents
+```bash
+npx antigravity-codex-bridge init --path ./my-project
+```
+
+### Local Development
+
+If you are running from the cloned repository before publishing to npm:
+
+```bash
+node ./bin/ag-codex.js init --path /path/to/your-project
 ```
 
 Then open the target project in VS Code with Codex enabled and reload skills.
@@ -46,7 +54,7 @@ This package is built for **Codex skills**, not Antigravity slash commands.
 
 ## Usage
 
-After copying `.agents` into your project:
+After installing `.agents` into your project:
 
 1. Open the project in VS Code.
 2. Switch to the `CODEX` tab.
@@ -63,6 +71,15 @@ $plan migrate this app from REST to tRPC
 $clean-code review this module before shipping
 $ui-ux-pro-max redesign the homepage
 ```
+
+## CLI Commands
+
+| Command | Description |
+|---------|-------------|
+| `ag-codex init` | Install `.agents` into the current project |
+| `ag-codex init --path ./my-project` | Install into a specific directory |
+| `ag-codex update` | Reinstall and overwrite the existing `.agents` folder |
+| `ag-codex status` | Show whether `.agents` is installed and count its contents |
 
 ## Core Command Skills
 
@@ -129,9 +146,13 @@ This repository is intended to publish the portable Codex package only.
 Push these files:
 
 - `.agents/`
+- `bin/`
 - `.gitignore`
+- `.npmignore`
 - `LICENSE`
 - `README.md`
+- `README(th).md`
+- `package.json`
 
 Do not push these local-only compatibility layers:
 
@@ -146,7 +167,7 @@ The goal is to ship a clean Codex-first package:
 - no duplicate `.agent` and `.agents` trees in the published repo
 - no local plugin bridge required for end users
 - no dependency on hidden workspace-only paths
-- just a portable `.agents` folder ready for Codex
+- just a portable `.agents` folder plus a tiny installer CLI
 
 ## Credits
 

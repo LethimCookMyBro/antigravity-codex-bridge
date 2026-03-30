@@ -1,0 +1,44 @@
+{
+  "name": "antigravity-codex-bridge",
+  "version": "0.1.0",
+  "description": "Antigravity-inspired skills, agents, and workflows packaged for OpenAI Codex.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "antigravity-codex-bridge": "./bin/ag-codex.js",
+    "ag-codex": "./bin/ag-codex.js"
+  },
+  "files": [
+    ".agents/.shared/**/*.csv",
+    ".agents/.shared/**/*.py",
+    ".agents/agents/**/*.md",
+    ".agents/scripts/**/*.py",
+    ".agents/skills/**/*.md",
+    ".agents/skills/**/*.py",
+    ".agents/skills/**/*.yaml",
+    ".agents/workflows/**/*.md",
+    "bin/ag-codex.js",
+    "README.md",
+    "README(th).md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LethimCookMyBro/antigravity-codex-bridge.git"
+  },
+  "homepage": "https://github.com/LethimCookMyBro/antigravity-codex-bridge#readme",
+  "bugs": {
+    "url": "https://github.com/LethimCookMyBro/antigravity-codex-bridge/issues"
+  },
+  "keywords": [
+    "codex",
+    "openai-codex",
+    "agents",
+    "skills",
+    "workflow",
+    "antigravity"
+  ]
+}
