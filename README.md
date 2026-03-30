@@ -1,64 +1,64 @@
-# Antigravity Codex Bridge
+# AG Kit
 
-Antigravity-inspired skills, agents, and workflows packaged for OpenAI Codex.
+Portable Codex skills, specialist agents, workflows, and helper scripts packaged as one installable bundle.
 
-This repository installs a portable `.agents` bundle into any project so Codex can discover the same workflows, specialist agents, and support scripts locally.
+`@lizmotia/ag-kit` installs a project-local `.agents` directory so OpenAI Codex can discover the same operating system across projects.
 
-## What This Is
+## Install
 
-- A Codex-first package for repo-local skills and agents
-- A small CLI that installs `.agents` into a target project
-- A bridge for Antigravity-style workflows such as `$brainstorm`, `$debug`, `$plan`, and `$create`
-
-## Important Note
-
-This package is for Codex skills, not Antigravity slash commands.
-
-- Use `$brainstorm`, `$debug`, `$plan`, `$create`, `$clean-code`, and similar skills
-- Do not expect custom `/brainstorm` or `/debug` commands in Codex
-- Keep the `.agents/` folder in the project root so Codex can discover it
-
-## Quick Start
-
-Until this package is published to npm, use the local CLI.
-
-From this repository:
+Run once inside the target project:
 
 ```bash
-node ./bin/ag-codex.js init --path ../my-project
-```
-
-From the target project when this repo is next to it:
-
-```bash
-node ../antigravity-codex-bridge/bin/ag-codex.js init --path .
-```
-
-Windows `cmd` example:
-
-```bat
-node "..\antigravity-codex-bridge\bin\ag-codex.js" init --path .
-```
-
-After npm publish:
-
-```bash
-npx antigravity-codex-bridge init
+npx @lizmotia/ag-kit init
 ```
 
 Or install globally:
 
 ```bash
-npm install -g antigravity-codex-bridge
+npm install -g @lizmotia/ag-kit
+ag-kit init
+```
+
+Local development path:
+
+```bash
+node ./bin/ag-codex.js init --path ../my-project
+```
+
+Compatibility alias:
+
+```bash
 ag-codex init
 ```
 
-## After Install
+## What It Installs
 
-1. Open the target project in VS Code.
-2. Switch to the `CODEX` tab.
-3. Reload the window or run `Force reload skills`.
-4. Invoke skills with `$`.
+The CLI copies a portable `.agents` tree into the target project root.
+
+That bundle currently includes:
+
+| Component | Count | Purpose |
+|---------|------:|---------|
+| Agents | 20 | Specialist execution roles such as frontend, backend, security, QA, and planning |
+| Skills | 48 | Codex-readable guidance, patterns, checklists, and domain playbooks |
+| Workflows | 11 | Entry workflows like `brainstorm`, `create`, `debug`, `plan`, and `test` |
+| Scripts | 4 | Shared helpers for verification, preview, checklist, and session tasks |
+
+## Core Idea
+
+AG Kit is designed for Codex skills, not custom slash-command runtimes.
+
+- Use `$brainstorm`, `$create`, `$debug`, `$plan`, `$test`, and related skills inside Codex.
+- Keep `.agents/` at the project root so Codex can discover it.
+- Use one portable package instead of manually copying prompts and helper files between repositories.
+
+## Typical Flow
+
+1. Install `.agents` into a project.
+2. Open that project in VS Code.
+3. Switch to the `CODEX` tab.
+4. Reload the window or run `Force reload skills`.
+5. Invoke skills with `$`.
 
 Examples:
 
@@ -75,58 +75,58 @@ $ui-ux-pro-max redesign the homepage
 
 | Command | Description |
 |---------|-------------|
-| `ag-codex init` | Install `.agents` into the current project |
-| `ag-codex init --path ./my-project` | Install into a specific directory |
-| `ag-codex update` | Reinstall and overwrite the existing `.agents` folder |
-| `ag-codex status` | Show whether `.agents` is installed and summarize its contents |
+| `ag-kit init` | Install `.agents` into the current directory |
+| `ag-kit init --path ./my-project` | Install into a specific directory |
+| `ag-kit update` | Reinstall and overwrite the existing `.agents` folder |
+| `ag-kit status` | Show whether `.agents` is installed and summarize its contents |
+| `ag-kit help` | Show usage information |
 
-## What's Included
+## Package Scope
 
-| Component | Count | Description |
-|----------|------:|-------------|
-| **Agents** | 20 | Specialist prompts for planning, frontend, backend, security, QA, DevOps, and more |
-| **Skills** | 48 | Codex-ready skills adapted from Antigravity and expanded for Codex usage |
-| **Workflows** | 11 | Task entrypoints such as `brainstorm`, `debug`, `plan`, and `test` |
-| **Scripts** | 4 | Shared helpers for preview, verification, checklist, and session tasks |
+The published npm package is:
 
-Highlighted workflow skills:
+```bash
+@lizmotia/ag-kit
+```
 
-- `$brainstorm`
-- `$create`
-- `$debug`
-- `$deploy`
-- `$enhance`
-- `$orchestrate`
-- `$plan`
-- `$preview`
-- `$status`
-- `$test`
-- `$ui-ux-pro-max`
+The repository also keeps `ag-codex` as a CLI alias for compatibility, but `ag-kit` is the primary command going forward.
 
-## Repository Docs
+## Repository Layout
 
-- [Agent Flow Architecture](./AGENT_FLOW.md)
+```text
+.
+|-- .agents/
+|   |-- agents/
+|   |-- skills/
+|   |-- workflows/
+|   |-- scripts/
+|   `-- .shared/
+|-- bin/ag-codex.js
+|-- AGENT_FLOW.md
+|-- PUBLISHING.md
+|-- README.md
+`-- README(th).md
+```
 
-## Publish Scope
+## Published Scope
 
-This repository is meant to ship the portable Codex package only.
-
-Include:
+The npm package is intentionally limited to the portable runtime:
 
 - `.agents/`
 - `bin/`
-- `.gitignore`
-- `.npmignore`
-- `LICENSE`
+- `AGENT_FLOW.md`
+- `PUBLISHING.md`
 - `README.md`
 - `README(th).md`
+- `LICENSE`
 - `package.json`
 
-Do not include local-only compatibility layers:
+Local-only compatibility files are excluded from the published package.
 
-- `.agent/`
-- `plugins/antigravity/`
-- `.agents/plugins/`
+## Docs
+
+- [Agent Flow](./AGENT_FLOW.md)
+- [Publishing Guide](./PUBLISHING.md)
 
 ## License
 

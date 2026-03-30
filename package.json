@@ -1,12 +1,18 @@
 {
-  "name": "antigravity-codex-bridge",
+  "name": "@lizmotia/ag-kit",
   "version": "0.1.0",
   "description": "Antigravity-inspired skills, agents, and workflows packaged for OpenAI Codex.",
   "license": "MIT",
   "type": "module",
   "bin": {
-    "antigravity-codex-bridge": "./bin/ag-codex.js",
+    "ag-kit": "./bin/ag-codex.js",
     "ag-codex": "./bin/ag-codex.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "pack:check": "npm pack --dry-run"
   },
   "files": [
     ".agents/.shared/**/*.csv",
@@ -18,6 +24,8 @@
     ".agents/skills/**/*.yaml",
     ".agents/workflows/**/*.md",
     "bin/ag-codex.js",
+    "AGENT_FLOW.md",
+    "PUBLISHING.md",
     "README.md",
     "README(th).md",
     "LICENSE"

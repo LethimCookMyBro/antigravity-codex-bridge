@@ -10,19 +10,20 @@ const packageRoot = path.resolve(__dirname, "..");
 const sourceAgentsDir = path.join(packageRoot, ".agents");
 
 function printHelp() {
-  console.log(`Antigravity Codex Bridge CLI
+  console.log(`AG Kit CLI
 
 Usage:
-  ag-codex init [--path <project-dir>] [--force] [--dry-run]
-  ag-codex update [--path <project-dir>] [--dry-run]
-  ag-codex status [--path <project-dir>]
-  ag-codex help
+  ag-kit init [--path <project-dir>] [--force] [--dry-run]
+  ag-kit update [--path <project-dir>] [--dry-run]
+  ag-kit status [--path <project-dir>]
+  ag-kit help
 
 Examples:
   node ./bin/ag-codex.js init --path ../my-project
-  node ../antigravity-codex-bridge/bin/ag-codex.js init --path .
-  node "..\\antigravity-codex-bridge\\bin\\ag-codex.js" init --path .
-  npx antigravity-codex-bridge init   # after npm publish
+  node ../your-cloned-folder/bin/ag-codex.js init --path .
+  node "C:\\full\\path\\to\\your\\cloned\\repo\\bin\\ag-codex.js" init --path .
+  npx @lizmotia/ag-kit init   # after npm publish
+  npm install -g @lizmotia/ag-kit && ag-kit init
 `);
 }
 
@@ -134,7 +135,7 @@ function initProject(targetRoot, { force, dryRun }) {
   fs.rmSync(targetAgentsDir, { recursive: true, force: true });
   copyDir(sourceAgentsDir, targetAgentsDir);
 
-  console.log("Installed Antigravity Codex Bridge");
+  console.log("Installed AG Kit");
   console.log(`Target: ${targetAgentsDir}`);
   console.log("Next steps:");
   console.log("1. Open the project in VS Code");
@@ -159,7 +160,7 @@ function statusProject(targetRoot) {
     scripts: countItems(path.join(targetAgentsDir, "scripts"), (entry) => entry.isFile())
   };
 
-  console.log("Antigravity Codex Bridge status");
+  console.log("AG Kit status");
   console.log(`Path: ${targetAgentsDir}`);
   console.log(`Agents: ${counts.agents}`);
   console.log(`Skills: ${counts.skills}`);
@@ -191,7 +192,7 @@ function main() {
     }
   } catch (error) {
     console.error(`Error: ${error.message}`);
-    console.error("Run `ag-codex help` for usage.");
+    console.error("Run `ag-kit help` for usage.");
     process.exit(1);
   }
 }

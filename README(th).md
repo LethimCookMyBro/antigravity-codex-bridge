@@ -1,64 +1,64 @@
-# Antigravity Codex Bridge
+# AG Kit
 
-ชุด skills, agents และ workflows สไตล์ Antigravity ที่แพ็กมาให้ใช้กับ OpenAI Codex
+ชุด skills, specialist agents, workflows และ helper scripts แบบพกพาสำหรับ OpenAI Codex ในแพ็กเดียว
 
-repo นี้ช่วยติดตั้งชุด `.agents` แบบพกพาเข้าไปในโปรเจกต์ใดก็ได้ เพื่อให้ Codex มองเห็น workflows, specialist agents และ scripts ชุดเดียวกันในแต่ละโปรเจกต์
+`@lizmotia/ag-kit` ใช้สำหรับติดตั้งโฟลเดอร์ `.agents` ลงในโปรเจกต์ เพื่อให้ Codex มองเห็นชุดการทำงานเดียวกันได้ในทุก repo
 
-## มันคืออะไร
+## ติดตั้ง
 
-- แพ็กแบบ Codex-first สำหรับ repo-local skills และ agents
-- CLI ขนาดเล็กสำหรับติดตั้ง `.agents` ลงในโปรเจกต์ปลายทาง
-- ตัว bridge สำหรับ workflow แบบ Antigravity เช่น `$brainstorm`, `$debug`, `$plan` และ `$create`
-
-## หมายเหตุสำคัญ
-
-แพ็กนี้ถูกทำมาสำหรับ Codex skills ไม่ใช่ Antigravity slash commands
-
-- ใช้ `$brainstorm`, `$debug`, `$plan`, `$create`, `$clean-code` และ skills อื่น ๆ
-- ไม่ควรคาดหวัง custom `/brainstorm` หรือ `/debug` ใน Codex
-- ควรวาง `.agents/` ไว้ที่ root ของโปรเจกต์ เพื่อให้ Codex มองเห็น
-
-## เริ่มใช้งานเร็ว
-
-ตราบใดที่ package นี้ยังไม่ได้ publish ขึ้น npm ให้ใช้ local CLI ไปก่อน
-
-รันจาก repo นี้:
+รันในโปรเจกต์ปลายทางได้เลย:
 
 ```bash
-node ./bin/ag-codex.js init --path ../my-project
-```
-
-รันจากโปรเจกต์ปลายทาง ในกรณีที่ repo นี้อยู่ข้าง ๆ กัน:
-
-```bash
-node ../antigravity-codex-bridge/bin/ag-codex.js init --path .
-```
-
-ตัวอย่างบน Windows `cmd`:
-
-```bat
-node "..\antigravity-codex-bridge\bin\ag-codex.js" init --path .
-```
-
-หลังจาก publish ขึ้น npm แล้ว:
-
-```bash
-npx antigravity-codex-bridge init
+npx @lizmotia/ag-kit init
 ```
 
 หรือติดตั้งแบบ global:
 
 ```bash
-npm install -g antigravity-codex-bridge
+npm install -g @lizmotia/ag-kit
+ag-kit init
+```
+
+ถ้าจะทดสอบจาก source ใน repo นี้:
+
+```bash
+node ./bin/ag-codex.js init --path ../my-project
+```
+
+alias ที่ยังใช้ได้:
+
+```bash
 ag-codex init
 ```
 
-## หลังติดตั้งแล้วทำอะไรต่อ
+## แพ็กนี้ติดตั้งอะไรให้
 
-1. เปิดโปรเจกต์ปลายทางใน VS Code
-2. ไปที่แท็บ `CODEX`
-3. Reload window หรือใช้ `Force reload skills`
-4. เรียกใช้ skills ด้วย `$`
+CLI จะคัดลอก `.agents` แบบพกพาไปไว้ที่ root ของโปรเจกต์ปลายทาง
+
+ชุดที่ติดตั้งตอนนี้มี:
+
+| ส่วนประกอบ | จำนวน | หน้าที่ |
+|---------|------:|---------|
+| Agents | 20 | บทบาทเฉพาะทาง เช่น frontend, backend, security, QA และ planning |
+| Skills | 48 | คำสั่งนำทาง, playbook, checklist และแนวปฏิบัติสำหรับ Codex |
+| Workflows | 11 | entry workflow เช่น `brainstorm`, `create`, `debug`, `plan` และ `test` |
+| Scripts | 4 | helper สำหรับ verification, preview, checklist และ session |
+
+## แนวคิดหลัก
+
+AG Kit ถูกออกแบบมาสำหรับระบบ skills ของ Codex ไม่ใช่ runtime ของ slash commands แบบ custom
+
+- ใช้ `$brainstorm`, `$create`, `$debug`, `$plan`, `$test` และ skill อื่น ๆ ภายใน Codex
+- วาง `.agents/` ไว้ที่ root ของโปรเจกต์ เพื่อให้ Codex หาเจอ
+- ใช้แพ็กเดียวเพื่อลดการคัดลอก prompts และ helper files ซ้ำ ๆ ระหว่างหลาย repo
+
+## ลำดับการใช้งานทั่วไป
+
+1. ติดตั้ง `.agents` ลงในโปรเจกต์
+2. เปิดโปรเจกต์นั้นใน VS Code
+3. ไปที่แท็บ `CODEX`
+4. Reload window หรือใช้ `Force reload skills`
+5. เรียกใช้งานด้วย `$`
 
 ตัวอย่าง:
 
@@ -74,59 +74,59 @@ $ui-ux-pro-max รีดีไซน์หน้า homepage
 ## CLI
 
 | คำสั่ง | ใช้ทำอะไร |
-|--------|------------|
-| `ag-codex init` | ติดตั้ง `.agents` ลงในโปรเจกต์ปัจจุบัน |
-| `ag-codex init --path ./my-project` | ติดตั้งลงใน path ที่ระบุ |
-| `ag-codex update` | ติดตั้งซ้ำและเขียนทับ `.agents` เดิม |
-| `ag-codex status` | เช็กว่าติดตั้ง `.agents` แล้วหรือยัง และสรุปจำนวนไฟล์หลัก |
+|---------|------------|
+| `ag-kit init` | ติดตั้ง `.agents` ลงในโฟลเดอร์ปัจจุบัน |
+| `ag-kit init --path ./my-project` | ติดตั้งลงใน path ที่ระบุ |
+| `ag-kit update` | ติดตั้งซ้ำและเขียนทับ `.agents` เดิม |
+| `ag-kit status` | เช็กว่าติดตั้งแล้วหรือยังและสรุปจำนวนไฟล์หลัก |
+| `ag-kit help` | แสดงวิธีใช้งาน |
 
-## สิ่งที่มีในแพ็กนี้
+## ชื่อ package บน npm
 
-| ส่วนประกอบ | จำนวน | รายละเอียด |
-|----------|------:|------------|
-| **Agents** | 20 | prompt เฉพาะทางสำหรับ planning, frontend, backend, security, QA, DevOps และอื่น ๆ |
-| **Skills** | 48 | skills ที่ปรับให้ใช้กับ Codex ได้จริง และขยายจาก ecosystem ของ Antigravity |
-| **Workflows** | 11 | entrypoints สำหรับงานอย่าง `brainstorm`, `debug`, `plan` และ `test` |
-| **Scripts** | 4 | helper scripts สำหรับ preview, verification, checklist และ session |
+แพ็กที่ publish อยู่ตอนนี้คือ:
 
-workflow skills เด่น ๆ:
+```bash
+@lizmotia/ag-kit
+```
 
-- `$brainstorm`
-- `$create`
-- `$debug`
-- `$deploy`
-- `$enhance`
-- `$orchestrate`
-- `$plan`
-- `$preview`
-- `$status`
-- `$test`
-- `$ui-ux-pro-max`
+ใน repo ยังเก็บ `ag-codex` ไว้เป็น alias เพื่อความเข้ากันได้ แต่ชื่อหลักที่ควรใช้ต่อจากนี้คือ `ag-kit`
 
-## เอกสารใน repo
+## โครงสร้าง repo
 
-- [Agent Flow Architecture](./AGENT_FLOW.md)
+```text
+.
+|-- .agents/
+|   |-- agents/
+|   |-- skills/
+|   |-- workflows/
+|   |-- scripts/
+|   `-- .shared/
+|-- bin/ag-codex.js
+|-- AGENT_FLOW.md
+|-- PUBLISHING.md
+|-- README.md
+`-- README(th).md
+```
 
-## ขอบเขตที่ควร publish
+## ขอบเขตที่ถูก publish
 
-repo นี้ตั้งใจให้ publish เฉพาะแพ็ก Codex ที่พกพาไปใช้ต่อได้
-
-ควรรวม:
+แพ็กบน npm ตั้งใจให้มีเฉพาะ runtime แบบพกพาที่จำเป็น:
 
 - `.agents/`
 - `bin/`
-- `.gitignore`
-- `.npmignore`
-- `LICENSE`
+- `AGENT_FLOW.md`
+- `PUBLISHING.md`
 - `README.md`
 - `README(th).md`
+- `LICENSE`
 - `package.json`
 
-ไม่ควรรวมส่วนที่เป็น local-only compatibility:
+ไฟล์ compatibility ที่ใช้เฉพาะในเครื่องหรือในสภาพแวดล้อมพัฒนา จะไม่ถูกรวมไปในแพ็กที่ publish
 
-- `.agent/`
-- `plugins/antigravity/`
-- `.agents/plugins/`
+## เอกสารเพิ่มเติม
+
+- [Agent Flow](./AGENT_FLOW.md)
+- [Publishing Guide](./PUBLISHING.md)
 
 ## License
 
