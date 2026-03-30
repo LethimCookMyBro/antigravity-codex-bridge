@@ -1,0 +1,4 @@
+interface:
+  display_name: "orchestrate"
+  short_description: "Coordinate multiple agents for complex tasks and multi-perspective analysis."
+  default_prompt: "Use the orchestrate workflow to plan the task, select multiple relevant specialists, coordinate their work, and synthesize the outcome."

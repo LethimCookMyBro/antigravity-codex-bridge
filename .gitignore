@@ -1,0 +1,59 @@
+# OS / Explorer
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor
+.idea/
+.vscode/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+!.env.local.example
+
+# Node / frontend
+node_modules/
+.next/
+.nuxt/
+.svelte-kit/
+dist/
+build/
+coverage/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Misc caches
+.cache/
+tmp/
+temp/
+
+# Generated runtime state
+.agents/preview.log
+.agents/preview.pid
+design-system/
+
+# Publish only the Codex-facing package.
+# `.agent/` is kept locally as legacy source material and should not ship.
+.agent/
+
+# Local plugin bridge and marketplace metadata are for this workspace only.
+# The portable open-source package lives under `.agents/`.
+plugins/antigravity/
+.agents/plugins/

@@ -1,0 +1,4 @@
+interface:
+  display_name: "deploy"
+  short_description: "Deployment workflow with pre-flight checks, execution, verification, and rollback awareness."
+  default_prompt: "Use the deploy workflow to validate readiness, confirm the target environment, perform a safe deployment, and report verification results."

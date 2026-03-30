@@ -1,0 +1,4 @@
+interface:
+  display_name: "create"
+  short_description: "Create a new application or project. Plans the build before implementation."
+  default_prompt: "Use the create workflow to understand the requested application, clarify missing requirements, choose a stack, plan the project, and then coordinate implementation."

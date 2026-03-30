@@ -1,0 +1,4 @@
+interface:
+  display_name: "status"
+  short_description: "Show project, agent, and preview status in a concise status board."
+  default_prompt: "Use the status workflow to summarize the current project state, running work, changed files, and preview status."

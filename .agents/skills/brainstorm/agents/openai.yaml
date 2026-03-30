@@ -1,0 +1,4 @@
+interface:
+  display_name: "brainstorm"
+  short_description: "Structured brainstorming for projects and features. Explores multiple options before implementation."
+  default_prompt: "Use the brainstorm workflow to explore the problem, generate multiple approaches, compare tradeoffs, and recommend a direction before implementation."

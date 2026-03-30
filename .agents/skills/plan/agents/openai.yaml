@@ -1,0 +1,4 @@
+interface:
+  display_name: "plan"
+  short_description: "Create a project plan only. No code writing, just structured planning and task breakdown."
+  default_prompt: "Use the plan workflow to ask the necessary clarifying questions, create a structured plan document, and stay in planning mode without implementing code."

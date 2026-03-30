@@ -1,0 +1,4 @@
+interface:
+  display_name: "ui-ux-pro-max"
+  short_description: "Plan and implement UI with the Antigravity UI/UX Pro Max workflow."
+  default_prompt: "Use the UI UX Pro Max workflow to analyze the product, choose a coherent visual direction, generate a design system, and implement polished UI."

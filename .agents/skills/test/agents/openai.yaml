@@ -1,0 +1,4 @@
+interface:
+  display_name: "test"
+  short_description: "Generate tests, run the test suite, or inspect coverage for a target."
+  default_prompt: "Use the test workflow to determine whether to generate tests, run tests, watch tests, or inspect coverage, then execute the appropriate path."

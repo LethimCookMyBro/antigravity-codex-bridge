@@ -1,0 +1,4 @@
+interface:
+  display_name: "enhance"
+  short_description: "Add or update features in an existing application with scoped planning first."
+  default_prompt: "Use the enhance workflow to understand the current project state, scope the requested change, plan the implementation, and then apply and test it."

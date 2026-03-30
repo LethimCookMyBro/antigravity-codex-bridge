@@ -1,0 +1,4 @@
+interface:
+  display_name: "preview"
+  short_description: "Preview server management for start, stop, restart, and health checks."
+  default_prompt: "Use the preview workflow to inspect or manage the local preview server and report status, URL, and health clearly."

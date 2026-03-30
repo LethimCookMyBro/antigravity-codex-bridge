@@ -1,0 +1,4 @@
+interface:
+  display_name: "debug"
+  short_description: "Debugging command. Activates systematic investigation for bugs and unexpected behavior."
+  default_prompt: "Use the debug workflow to gather symptoms, form ranked hypotheses, investigate methodically, identify the root cause, and apply the fix."
