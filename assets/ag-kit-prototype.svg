@@ -1,0 +1,56 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7F3EC"/>
+      <stop offset="1" stop-color="#E6F0EA"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#15352C"/>
+      <stop offset="1" stop-color="#0D211B"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="1280" height="720" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#0A1713" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="720" rx="32" fill="url(#bg)"/>
+
+  <rect x="64" y="64" width="1152" height="592" rx="28" fill="#FFFDF9" filter="url(#shadow)"/>
+
+  <rect x="96" y="96" width="488" height="528" rx="24" fill="url(#panel)"/>
+  <circle cx="136" cy="136" r="8" fill="#FF8D7A"/>
+  <circle cx="164" cy="136" r="8" fill="#FFD36B"/>
+  <circle cx="192" cy="136" r="8" fill="#72E0A6"/>
+  <text x="224" y="142" fill="#D8E7E0" font-family="Consolas, 'Courier New', monospace" font-size="20">terminal</text>
+
+  <text x="132" y="200" fill="#72E0A6" font-family="Consolas, 'Courier New', monospace" font-size="24">$ npx @lizmotia/ag-kit init</text>
+  <text x="132" y="246" fill="#E8F4EF" font-family="Consolas, 'Courier New', monospace" font-size="20">Installing portable .agents runtime...</text>
+  <text x="132" y="286" fill="#E8F4EF" font-family="Consolas, 'Courier New', monospace" font-size="20">+ agents/</text>
+  <text x="132" y="322" fill="#E8F4EF" font-family="Consolas, 'Courier New', monospace" font-size="20">+ skills/</text>
+  <text x="132" y="358" fill="#E8F4EF" font-family="Consolas, 'Courier New', monospace" font-size="20">+ workflows/</text>
+  <text x="132" y="394" fill="#E8F4EF" font-family="Consolas, 'Courier New', monospace" font-size="20">+ scripts/</text>
+  <text x="132" y="450" fill="#FFD36B" font-family="Consolas, 'Courier New', monospace" font-size="20">Open VS Code  →  CODEX  →  reload skills</text>
+  <text x="132" y="510" fill="#72E0A6" font-family="Consolas, 'Courier New', monospace" font-size="20">$brainstorm SaaS dashboard auth flow</text>
+  <text x="132" y="546" fill="#72E0A6" font-family="Consolas, 'Courier New', monospace" font-size="20">$debug login returns 500</text>
+
+  <text x="642" y="148" fill="#15352C" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="700">AG Kit Prototype</text>
+  <text x="642" y="190" fill="#4E665D" font-family="Segoe UI, Arial, sans-serif" font-size="24">ภาพรวมหน้าตาการใช้งานหลังติดตั้งในโปรเจกต์</text>
+
+  <rect x="642" y="236" width="520" height="128" rx="20" fill="#F3EFE5" stroke="#D8D1C1"/>
+  <text x="676" y="282" fill="#15352C" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">1. Install once</text>
+  <text x="676" y="322" fill="#4E665D" font-family="Segoe UI, Arial, sans-serif" font-size="22">ติดตั้ง .agents ลง repo ด้วยคำสั่งเดียว</text>
+
+  <rect x="642" y="384" width="248" height="176" rx="20" fill="#E7F0EA" stroke="#BCD0C5"/>
+  <text x="670" y="428" fill="#15352C" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">2. Codex sees</text>
+  <text x="670" y="468" fill="#4E665D" font-family="Segoe UI, Arial, sans-serif" font-size="20">skills</text>
+  <text x="670" y="500" fill="#4E665D" font-family="Segoe UI, Arial, sans-serif" font-size="20">specialist agents</text>
+  <text x="670" y="532" fill="#4E665D" font-family="Segoe UI, Arial, sans-serif" font-size="20">workflows</text>
+
+  <rect x="914" y="384" width="248" height="176" rx="20" fill="#FFF4DA" stroke="#E6D3A4"/>
+  <text x="942" y="428" fill="#15352C" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">3. Use directly</text>
+  <text x="942" y="468" fill="#4E665D" font-family="Segoe UI, Arial, sans-serif" font-size="20">$brainstorm</text>
+  <text x="942" y="500" fill="#4E665D" font-family="Segoe UI, Arial, sans-serif" font-size="20">$create</text>
+  <text x="942" y="532" fill="#4E665D" font-family="Segoe UI, Arial, sans-serif" font-size="20">$debug / $plan / $test</text>
+
+  <text x="642" y="608" fill="#4E665D" font-family="Segoe UI, Arial, sans-serif" font-size="20">Goal: same Codex workflow across every repo, without re-copying prompts.</text>
+</svg>
