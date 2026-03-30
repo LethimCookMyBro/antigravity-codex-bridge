@@ -6,46 +6,30 @@
 
 ## ติดตั้งแบบเร็ว
 
-package นี้ยังไม่ได้ publish ขึ้น npm ตอนนี้ ให้ใช้วิธีที่ใช้งานได้จริงด้านล่างก่อน:
+package นี้ยังไม่ได้ publish ขึ้น npm ตอนนี้
 
-### รันจาก repo นี้โดยตรง
+ถ้ารันจาก repo นี้โดยตรง:
 
 ```bash
 node ./bin/ag-codex.js init --path /path/to/your-project
 ```
 
-ถ้ายืนอยู่ในโปรเจกต์ปลายทางอยู่แล้ว ใช้แบบนี้ได้:
+ถ้ายืนอยู่ในโปรเจกต์ปลายทางอยู่แล้ว ให้ระบุ path มาที่ repo นี้:
 
 ```bash
 node /path/to/antigravity-codex-bridge/bin/ag-codex.js init --path .
 ```
 
-### ลิงก์ไว้ใช้ซ้ำในเครื่อง
+ตัวอย่างบน Windows `cmd`:
 
-```bash
-npm link
-ag-codex init --path /path/to/your-project
+```bat
+node "C:\Users\User\Downloads\forCODEX\bin\ag-codex.js" init --path .
 ```
 
-### หลังจาก publish package นี้ขึ้น npm แล้ว
-
-สามารถติดตั้งแบบง่ายได้เลย:
+หลังจาก publish package นี้ขึ้น npm แล้ว:
 
 ```bash
 npx antigravity-codex-bridge init
-```
-
-หรือติดตั้งแบบ global:
-
-```bash
-npm install -g antigravity-codex-bridge
-ag-codex init
-```
-
-ถ้าต้องการระบุ path:
-
-```bash
-npx antigravity-codex-bridge init --path ./my-project
 ```
 
 จากนั้นเปิดโปรเจกต์ใน VS Code ที่มี Codex แล้วสั่ง reload skills

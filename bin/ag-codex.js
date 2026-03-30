@@ -20,6 +20,8 @@ Usage:
 
 Examples:
   node ./bin/ag-codex.js init --path ./my-app
+  node "C:\\path\\to\\antigravity-codex-bridge\\bin\\ag-codex.js" init --path .
+  npm exec --package /path/to/antigravity-codex-bridge antigravity-codex-bridge init -- --path .
   npm link
   ag-codex init --path ./my-app
   npx antigravity-codex-bridge init   # after npm publish
