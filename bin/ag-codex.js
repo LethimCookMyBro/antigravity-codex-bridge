@@ -19,10 +19,10 @@ Usage:
   ag-codex help
 
 Examples:
-  npx antigravity-codex-bridge init
-  npx antigravity-codex-bridge init --path ./my-app
-  npm install -g antigravity-codex-bridge
-  ag-codex init
+  node ./bin/ag-codex.js init --path ./my-app
+  npm link
+  ag-codex init --path ./my-app
+  npx antigravity-codex-bridge init   # after npm publish
 `);
 }
 

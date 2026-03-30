@@ -6,7 +6,28 @@ This repository turns the Antigravity workflow style into a Codex-friendly, repo
 
 ## Quick Install
 
-After publishing this package to npm:
+This package is not currently published to npm. Use one of these working options first:
+
+### Run from the cloned repository
+
+```bash
+node ./bin/ag-codex.js init --path /path/to/your-project
+```
+
+If you are already inside the target project, use:
+
+```bash
+node /path/to/antigravity-codex-bridge/bin/ag-codex.js init --path .
+```
+
+### Link it locally for repeated use
+
+```bash
+npm link
+ag-codex init --path /path/to/your-project
+```
+
+### After publishing this package to npm
 
 ```bash
 npx antigravity-codex-bridge init
@@ -23,14 +44,6 @@ Install into a specific path:
 
 ```bash
 npx antigravity-codex-bridge init --path ./my-project
-```
-
-### Local Development
-
-If you are running from the cloned repository before publishing to npm:
-
-```bash
-node ./bin/ag-codex.js init --path /path/to/your-project
 ```
 
 Then open the target project in VS Code with Codex enabled and reload skills.
