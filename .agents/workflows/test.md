@@ -1,144 +1,109 @@
 ---
-description: Test generation and test running command. Creates and executes tests for code.
+description: Generate, run, and review tests for the current code or feature.
 ---
 
-# /test - Test Generation and Execution
+# $test
 
 $ARGUMENTS
 
----
+Use this workflow to generate tests, run the current suite, inspect failures, or improve verification
+coverage for a feature or module.
 
 ## Purpose
 
-This command generates tests, runs existing tests, or checks test coverage.
+`$test` exists to turn vague testing requests into structured verification work that matches the current
+project patterns and clearly reports pass/fail status.
 
----
+## What This Workflow Does
 
-## Sub-commands
+1. Determines whether the task is test generation, test execution, or test repair.
+2. Uses existing test conventions where possible.
+3. Surfaces failures clearly.
+4. Suggests the next step when tests fail.
 
-```
-/test                - Run all tests
-/test [file/feature] - Generate tests for specific target
-/test coverage       - Show test coverage report
-/test watch          - Run tests in watch mode
-```
+## Use When
 
----
+- The user asks to add tests.
+- The user wants to run or fix the current suite.
+- A feature needs verification before shipping.
+- A regression needs a test to lock in the fix.
 
-## Behavior
+## Do Not Use When
 
-### Generate Tests
+- The main task is architectural planning.
+- The main issue is runtime debugging without a test angle.
 
-When asked to test a file or feature:
+## Helpful Validation Commands
 
-1. **Analyze the code**
-   - Identify functions and methods
-   - Find edge cases
-   - Detect dependencies to mock
-
-2. **Generate test cases**
-   - Happy path tests
-   - Error cases
-   - Edge cases
-   - Integration tests (if needed)
-
-3. **Write tests**
-   - Use project's test framework (Jest, Vitest, etc.)
-   - Follow existing test patterns
-   - Mock external dependencies
-
----
-
-## Output Format
-
-### For Test Generation
-
-```markdown
-## 🧪 Tests: [Target]
-
-### Test Plan
-| Test Case | Type | Coverage |
-|-----------|------|----------|
-| Should create user | Unit | Happy path |
-| Should reject invalid email | Unit | Validation |
-| Should handle db error | Unit | Error case |
-
-### Generated Tests
-
-`tests/[file].test.ts`
-
-[Code block with tests]
-
----
-
-Run with: `npm test`
+```bash
+python3 .agents/scripts/checklist.py . --skip-performance
+python3 .agents/scripts/verify_all.py . --url http://localhost:3000 --no-e2e
+bash .agents/scripts/run.sh
 ```
 
-### For Test Execution
+## Related Skills
 
-```
-🧪 Running tests...
+- `$testing-patterns`
+- `$tdd-workflow`
+- `$debug`
 
-✅ auth.test.ts (5 passed)
-✅ user.test.ts (8 passed)
-❌ order.test.ts (2 passed, 1 failed)
+## Recommended Flow
 
-Failed:
-  ✗ should calculate total with discount
-    Expected: 90
-    Received: 100
+### Phase 1: Identify the Scope
 
-Total: 15 tests (14 passed, 1 failed)
-```
+- which feature, file, or flow?
+- is this generation, execution, or repair?
 
----
+### Phase 2: Match Existing Patterns
 
-## Examples
+- current test framework
+- naming conventions
+- mock patterns
+- fixture conventions
 
-```
-/test src/services/auth.service.ts
-/test user registration flow
-/test coverage
-/test fix failed tests
-```
+### Phase 3: Run or Write the Tests
 
----
+- prefer behavior-focused coverage
+- keep tests readable
+- include edge cases when they matter
 
-## Test Patterns
+### Phase 4: Summarize Results
 
-### Unit Test Structure
+- what passed
+- what failed
+- what still needs follow-up
 
-```typescript
-describe('AuthService', () => {
-  describe('login', () => {
-    it('should return token for valid credentials', async () => {
-      // Arrange
-      const credentials = { email: 'test@test.com', password: 'pass123' };
-      
-      // Act
-      const result = await authService.login(credentials);
-      
-      // Assert
-      expect(result.token).toBeDefined();
-    });
+## Suggested Output
 
-    it('should throw for invalid password', async () => {
-      // Arrange
-      const credentials = { email: 'test@test.com', password: 'wrong' };
-      
-      // Act & Assert
-      await expect(authService.login(credentials)).rejects.toThrow('Invalid credentials');
-    });
-  });
-});
+```md
+## Test Summary
+
+### Scope
+- ...
+
+### Tests Added or Run
+- ...
+
+### Results
+- ...
+
+### Failures
+- ...
+
+### Follow-Up
+- ...
 ```
 
----
+## Example Invocations
 
-## Key Principles
+```text
+$test run the current suite
+$test generate tests for auth service
+$test fix the failing checkout tests
+$test add regression coverage for this bug
+```
 
-- **Test behavior not implementation**
-- **One assertion per test** (when practical)
-- **Descriptive test names**
-- **Arrange-Act-Assert pattern**
-- **Mock external dependencies**
+## Final Rule
+
+Do not present test work as complete unless the user can tell exactly what was run, added, or still
+failing.

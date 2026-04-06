@@ -1,63 +1,111 @@
 ---
-description: Add or update features in existing application. Used for iterative development.
+description: Add or update features in an existing application through an iterative enhancement workflow.
 ---
 
-# /enhance - Update Application
+# $enhance
 
 $ARGUMENTS
 
----
+Use this workflow to improve, extend, refactor, or add features to an existing application.
 
-## Task
+## Purpose
 
-This command adds features or makes updates to existing application.
+`$enhance` is the workflow for iterative development inside a codebase that already exists. It should
+respect current architecture, avoid unnecessary churn, and make the requested change verifiable.
 
-### Steps:
+## What This Workflow Does
 
-1. **Understand Current State**
-   - Load project state with `python .agents/scripts/session_manager.py info`
-   - Understand existing features, tech stack
+1. Inspects current project state first.
+2. Determines affected files and likely blast radius.
+3. Uses planning for large changes and direct edits for small ones.
+4. Verifies the enhancement before calling it done.
 
-2. **Plan Changes**
-   - Determine what will be added/changed
-   - Detect affected files
-   - Check dependencies
+## Use When
 
-3. **Present Plan to User** (for major changes)
-   ```
-   "To add admin panel:
-   - I'll create 15 new files
-   - Update 8 files
-   - Takes ~10 minutes
-   
-   Should I start?"
-   ```
+- The user wants to add a feature to an existing app.
+- The request is an improvement, not a greenfield build.
+- The app should keep its current stack and patterns.
 
-4. **Apply**
-   - Call relevant agents
-   - Make changes
-   - Test
+## Do Not Use When
 
-5. **Update Preview**
-   - Hot reload or restart
+- The task is a brand-new project.
+- The request is only analysis or planning.
+- The main problem is a bug that needs debugging first.
 
----
+## Project State Commands
 
-## Usage Examples
-
-```
-/enhance add dark mode
-/enhance build admin panel
-/enhance integrate payment system
-/enhance add search feature
-/enhance edit profile page
-/enhance make responsive
+```bash
+python3 .agents/scripts/session_manager.py info .
+python3 .agents/scripts/session_manager.py status .
+python3 .agents/scripts/checklist.py . --skip-performance
 ```
 
----
+## Recommended Flow
 
-## Caution
+### Phase 1: Understand Current State
 
-- Get approval for major changes
-- Warn on conflicting requests (e.g., "use Firebase" when project uses PostgreSQL)
-- Commit each change with git
+Check:
+
+- existing architecture
+- relevant features
+- constraints from current stack
+- likely owner areas
+
+### Phase 2: Scope the Enhancement
+
+Determine:
+
+- what should change
+- what should stay untouched
+- which files or modules are affected
+- whether approval is needed because the change is broad
+
+### Phase 3: Implement Incrementally
+
+- prefer focused changes over broad rewrites
+- preserve established repo patterns
+- keep the enhancement easy to review
+
+### Phase 4: Verify
+
+- run relevant tests
+- sanity-check preview when applicable
+- summarize what changed and what remains
+
+## Suggested Output
+
+```md
+## Enhancement Summary
+
+### Request
+- ...
+
+### Current State
+- ...
+
+### Change Plan
+- ...
+
+### Applied Updates
+- ...
+
+### Verification
+- ...
+
+### Next Step
+- ...
+```
+
+## Example Invocations
+
+```text
+$enhance add dark mode to this dashboard
+$enhance make the landing page responsive
+$enhance add search and filtering to the product list
+$enhance improve onboarding for first-time users
+```
+
+## Final Rule
+
+Prefer minimal, compatible changes over broad rewrites unless the user clearly asks for a redesign or
+refactor.

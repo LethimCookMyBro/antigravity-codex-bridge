@@ -1,176 +1,120 @@
 ---
-description: Deployment command for production releases. Pre-flight checks and deployment execution.
+description: Run the deployment workflow with pre-flight checks, release steps, and verification.
 ---
 
-# /deploy - Production Deployment
+# $deploy
 
 $ARGUMENTS
 
----
+Use this workflow for release readiness checks, preview deploys, production deployment planning,
+verification, and rollback preparation.
 
 ## Purpose
 
-This command handles production deployment with pre-flight checks, deployment execution, and verification.
+`$deploy` exists to reduce release mistakes. It makes Codex slow down and verify readiness before
+describing or executing deployment steps.
 
----
+## What This Workflow Does
 
-## Sub-commands
+1. Reviews deployment readiness.
+2. Checks build, test, and environment assumptions.
+3. Identifies the relevant release path for the project.
+4. Produces a verification and rollback-aware deploy summary.
 
-```
-/deploy            - Interactive deployment wizard
-/deploy check      - Run pre-deployment checks only
-/deploy preview    - Deploy to preview/staging
-/deploy production - Deploy to production
-/deploy rollback   - Rollback to previous version
-```
+## Use When
 
----
+- The user wants to deploy or prepare for deployment.
+- A release check is needed before shipping.
+- A staging or preview release should be validated.
+- The team needs a rollback-aware release plan.
 
-## Pre-Deployment Checklist
+## Do Not Use When
 
-Before any deployment:
+- The task is just local preview.
+- The request is mainly feature work or debugging.
 
-```markdown
-## 🚀 Pre-Deploy Checklist
+## Repo-Local Verification Commands
 
-### Code Quality
-- [ ] No TypeScript errors (`npx tsc --noEmit`)
-- [ ] ESLint passing (`npx eslint .`)
-- [ ] All tests passing (`npm test`)
-
-### Security
-- [ ] No hardcoded secrets
-- [ ] Environment variables documented
-- [ ] Dependencies audited (`npm audit`)
-
-### Performance
-- [ ] Bundle size acceptable
-- [ ] No console.log statements
-- [ ] Images optimized
-
-### Documentation
-- [ ] README updated
-- [ ] CHANGELOG updated
-- [ ] API docs current
-
-### Ready to deploy? (y/n)
+```bash
+python3 .agents/scripts/checklist.py .
+bash .agents/scripts/run.sh
+python3 .agents/scripts/verify_all.py . --url http://localhost:3000 --no-e2e
 ```
 
----
+## Pre-Flight Checklist
 
-## Deployment Flow
+Before any deploy-oriented answer, verify or ask about:
 
-```
-┌─────────────────┐
-│  /deploy        │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Pre-flight     │
-│  checks         │
-└────────┬────────┘
-         │
-    Pass? ──No──► Fix issues
-         │
-        Yes
-         │
-         ▼
-┌─────────────────┐
-│  Build          │
-│  application    │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Deploy to      │
-│  platform       │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Health check   │
-│  & verify       │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  ✅ Complete    │
-└─────────────────┘
-```
+- build status
+- test status
+- environment variables
+- migration needs
+- preview or staging health
+- rollback path
 
----
+## Recommended Flow
 
-## Output Format
+### Phase 1: Identify the Release Context
 
-### Successful Deploy
+- preview / staging / production
+- platform or hosting target
+- whether the request is planning only or execution support
 
-```markdown
-## 🚀 Deployment Complete
+### Phase 2: Review Readiness
 
-### Summary
-- **Version:** v1.2.3
-- **Environment:** production
-- **Duration:** 47 seconds
-- **Platform:** Vercel
+Check or confirm:
 
-### URLs
-- 🌐 Production: https://app.example.com
-- 📊 Dashboard: https://vercel.com/project
+- build passes
+- critical tests pass
+- secrets are not hardcoded
+- required environment config exists
+- known risks are surfaced
 
-### What Changed
-- Added user profile feature
-- Fixed login bug
-- Updated dependencies
+### Phase 3: Describe the Release Path
 
-### Health Check
-✅ API responding (200 OK)
-✅ Database connected
-✅ All services healthy
+Summarize:
+
+- what should be deployed
+- what sequence should be followed
+- what should be checked immediately after
+
+### Phase 4: Confirm Verification and Rollback
+
+Always include:
+
+- how success will be confirmed
+- what rollback or mitigation exists if the deploy fails
+
+## Suggested Output
+
+```md
+## Deploy Summary
+
+### Environment
+- ...
+
+### Pre-Flight Result
+- ...
+
+### Release Steps
+- ...
+
+### Verification
+- ...
+
+### Rollback Notes
+- ...
 ```
 
-### Failed Deploy
+## Example Invocations
 
-```markdown
-## ❌ Deployment Failed
-
-### Error
-Build failed at step: TypeScript compilation
-
-### Details
-```
-error TS2345: Argument of type 'string' is not assignable...
+```text
+$deploy check production readiness
+$deploy preview release for staging
+$deploy production release for the current app
+$deploy rollback plan after a failed release
 ```
 
-### Resolution
-1. Fix TypeScript error in `src/services/user.ts:45`
-2. Run `npm run build` locally to verify
-3. Try `/deploy` again
+## Final Rule
 
-### Rollback Available
-Previous version (v1.2.2) is still active.
-Run `/deploy rollback` if needed.
-```
-
----
-
-## Platform Support
-
-| Platform | Command | Notes |
-|----------|---------|-------|
-| Vercel | `vercel --prod` | Auto-detected for Next.js |
-| Railway | `railway up` | Needs Railway CLI |
-| Fly.io | `fly deploy` | Needs flyctl |
-| Docker | `docker compose up -d` | For self-hosted |
-
----
-
-## Examples
-
-```
-/deploy
-/deploy check
-/deploy preview
-/deploy production --skip-tests
-/deploy rollback
-```
+Never treat deployment as complete until post-release verification is explicitly addressed.

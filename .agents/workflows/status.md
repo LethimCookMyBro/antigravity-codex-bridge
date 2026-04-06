@@ -1,86 +1,82 @@
 ---
-description: Display agent and project status. Progress tracking and status board.
+description: Show current project, preview, and task progress status.
 ---
 
-# /status - Show Status
+# $status
 
 $ARGUMENTS
 
----
+Use this workflow to inspect current project state, preview status, and high-level readiness.
 
-## Task
+## Purpose
 
-Show current project and agent status.
+`$status` exists to answer "where are we right now?" without forcing the user to dig through files or
+guess which script to run next.
 
-### What It Shows
+## What This Workflow Shows
 
-1. **Project Info**
-   - Project name and path
-   - Tech stack
-   - Current features
+- current project path and session context
+- preview server status
+- useful next commands
+- optional high-level readiness cues
 
-2. **Agent Status Board**
-   - Which agents are running
-   - Which tasks are completed
-   - Pending work
+## Backing Commands
 
-3. **File Statistics**
-   - Files created count
-   - Files modified count
-
-4. **Preview Status**
-   - Is server running
-   - URL
-   - Health check
-
----
-
-## Example Output
-
-```
-=== Project Status ===
-
-📁 Project: my-ecommerce
-📂 Path: C:/projects/my-ecommerce
-🏷️ Type: nextjs-ecommerce
-📊 Status: active
-
-🔧 Tech Stack:
-   Framework: next.js
-   Database: postgresql
-   Auth: clerk
-   Payment: stripe
-
-✅ Features (5):
-   • product-listing
-   • cart
-   • checkout
-   • user-auth
-   • order-history
-
-⏳ Pending (2):
-   • admin-panel
-   • email-notifications
-
-📄 Files: 73 created, 12 modified
-
-=== Agent Status ===
-
-✅ database-architect → Completed
-✅ backend-specialist → Completed
-🔄 frontend-specialist → Dashboard components (60%)
-⏳ test-engineer → Waiting
-
-=== Preview ===
-
-🌐 URL: http://localhost:3000
-💚 Health: OK
+```bash
+python3 .agents/scripts/session_manager.py status .
+python3 .agents/scripts/session_manager.py info .
+python3 .agents/scripts/auto_preview.py status
 ```
 
----
+## Recommended Flow
 
-## Technical
+### Phase 1: Report Context
 
-Status uses these scripts:
-- `python .agents/scripts/session_manager.py status`
-- `python .agents/scripts/auto_preview.py status`
+- current project
+- current path
+- any available session summary
+
+### Phase 2: Report Preview
+
+- preview running or not
+- local URL if available
+- obvious health signal if available
+
+### Phase 3: Suggest What To Do Next
+
+Examples:
+
+- `$preview start`
+- `$debug`
+- `$test`
+- `$deploy check`
+
+## Suggested Output
+
+```md
+## Status
+
+### Project
+- ...
+
+### Session
+- ...
+
+### Preview
+- ...
+
+### Suggested Next Step
+- ...
+```
+
+## Example Invocations
+
+```text
+$status
+$status current project
+$status preview and session info
+```
+
+## Final Rule
+
+Prefer a concise, actionable snapshot over a noisy dump of low-value details.

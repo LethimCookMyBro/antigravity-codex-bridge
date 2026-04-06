@@ -1,113 +1,157 @@
 ---
-description: Structured brainstorming for projects and features. Explores multiple options before implementation.
+description: Structured brainstorming before implementation so the team explores options first.
 ---
 
-# /brainstorm - Structured Idea Exploration
+# $brainstorm
 
 $ARGUMENTS
 
----
+Use this workflow when the user wants structured idea exploration before committing to implementation.
 
 ## Purpose
 
-This command activates BRAINSTORM mode for structured idea exploration. Use when you need to explore options before committing to an implementation.
+`$brainstorm` exists to slow down just enough to avoid prematurely locking into a weak solution.
+It is the right workflow when the team needs options, tradeoffs, constraints, and a recommendation,
+not code.
 
----
+## What This Workflow Does
 
-## Behavior
+1. Clarifies the actual problem and desired outcome.
+2. Identifies constraints such as stack, timeline, team size, UX goals, or security requirements.
+3. Produces multiple viable approaches.
+4. Compares the approaches honestly.
+5. Recommends one path and explains why.
 
-When `/brainstorm` is triggered:
+## Use When
 
-1. **Understand the goal**
-   - What problem are we solving?
-   - Who is the user?
-   - What constraints exist?
+- The task is still ambiguous.
+- The user asks to compare options.
+- Multiple architectures or product directions are possible.
+- The team needs alignment before implementation.
+- The request is high-impact and hard to reverse later.
 
-2. **Generate options**
-   - Provide at least 3 different approaches
-   - Each with pros and cons
-   - Consider unconventional solutions
+## Do Not Use When
 
-3. **Compare and recommend**
-   - Summarize tradeoffs
-   - Give a recommendation with reasoning
+- The user already chose the direction and just wants implementation.
+- The task is a small bug fix.
+- The issue is operational and needs debugging instead of exploration.
 
----
+## Inputs To Clarify
 
-## Output Format
+Before giving options, extract or ask for only the minimum missing context:
 
-```markdown
-## 🧠 Brainstorm: [Topic]
+- What is being built or changed?
+- Who is the end user?
+- What is the main success metric?
+- Are there stack or platform constraints?
+- Is speed, maintainability, cost, or polish the top priority?
 
-### Context
-[Brief problem statement]
+## Recommended Thought Process
 
----
+### Phase 1: Define the Problem
 
-### Option A: [Name]
-[Description]
+- Restate the request in one sentence.
+- Separate the real goal from the user's first idea.
+- Identify hidden assumptions.
 
-✅ **Pros:**
-- [benefit 1]
-- [benefit 2]
+### Phase 2: Set Constraints
 
-❌ **Cons:**
-- [drawback 1]
+- Existing stack
+- Timeline
+- Team skill level
+- Budget or infrastructure limits
+- UX, performance, or security constraints
 
-📊 **Effort:** Low | Medium | High
+### Phase 3: Generate Options
 
----
+Produce at least 3 options when possible:
 
-### Option B: [Name]
-[Description]
+- conservative / low-risk option
+- balanced option
+- bold or unconventional option
 
-✅ **Pros:**
-- [benefit 1]
+### Phase 4: Compare Tradeoffs
 
-❌ **Cons:**
-- [drawback 1]
-- [drawback 2]
+For each option, assess:
 
-📊 **Effort:** Low | Medium | High
+- implementation effort
+- future flexibility
+- complexity
+- operational burden
+- compatibility with the current repo
 
----
+### Phase 5: Recommend a Direction
 
-### Option C: [Name]
-[Description]
+End with one recommended option plus a clear next action:
 
-✅ **Pros:**
-- [benefit 1]
+- move into `$plan`
+- move into `$create`
+- move into `$enhance`
+- or keep exploring one option in more depth
 
-❌ **Cons:**
-- [drawback 1]
+## Related Skills and Workflows
 
-📊 **Effort:** Low | Medium | High
+- `$brainstorming` for structured questioning
+- `$plan` when the exploration is done and implementation should be sequenced
+- `$architecture` when the decision is mostly architectural
+- `$create` for new builds
+- `$enhance` for changes to an existing project
 
----
+## Suggested Output
 
-## 💡 Recommendation
+```md
+## Brainstorm
 
-**Option [X]** because [reasoning].
+### Goal
+- ...
 
-What direction would you like to explore?
+### Constraints
+- ...
+
+### Option 1
+- Summary:
+- Pros:
+- Cons:
+- Risk:
+- Effort:
+
+### Option 2
+- Summary:
+- Pros:
+- Cons:
+- Risk:
+- Effort:
+
+### Option 3
+- Summary:
+- Pros:
+- Cons:
+- Risk:
+- Effort:
+
+### Recommendation
+- Best fit:
+- Why:
+- What to do next:
 ```
 
----
+## Good Output Characteristics
 
-## Examples
+- concrete, not vague
+- tradeoff-oriented, not sales-y
+- tailored to the current repo or request
+- avoids pretending there is only one good answer
 
+## Example Invocations
+
+```text
+$brainstorm authentication system for a SaaS dashboard
+$brainstorm state management for a complex form builder
+$brainstorm architecture for an internal admin portal
+$brainstorm feature ideas for a developer onboarding flow
 ```
-/brainstorm authentication system
-/brainstorm state management for complex form
-/brainstorm database schema for social app
-/brainstorm caching strategy
-```
 
----
+## Final Rule
 
-## Key Principles
-
-- **No code** - this is about ideas, not implementation
-- **Visual when helpful** - use diagrams for architecture
-- **Honest tradeoffs** - don't hide complexity
-- **Defer to user** - present options, let them decide
+Do not jump into implementation inside this workflow unless the user clearly pivots from exploration
+to execution.

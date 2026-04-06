@@ -1,89 +1,89 @@
 ---
-description: Create project plan using project-planner agent. No code writing - only plan file generation.
+description: Generate a project plan or execution plan before implementation begins.
 ---
 
-# /plan - Project Planning Mode
+# $plan
 
 $ARGUMENTS
 
----
+Use this workflow when the next best step is a plan, not immediate code changes.
 
-## 🔴 CRITICAL RULES
+## Purpose
 
-1. **NO CODE WRITING** - This command creates plan file only
-2. **Use project-planner agent** - NOT Antigravity Agent's native Plan mode
-3. **Socratic Gate** - Ask clarifying questions before planning
-4. **Dynamic Naming** - Plan file named based on task
+`$plan` exists to turn a request into an execution-ready plan with phases, dependencies, risks, and
+verification criteria before implementation begins.
 
----
+## What This Workflow Does
 
-## Task
+1. Clarifies the task scope.
+2. Identifies constraints and unknowns.
+3. Breaks the work into phases or milestones.
+4. Produces a plan with verification points and recommended next workflow.
 
-Use the `project-planner` agent with this context:
+## Use When
 
+- The task is large or multi-step.
+- The user asked for a plan explicitly.
+- The implementation path is not obvious.
+- A migration or refactor needs sequencing.
+
+## Do Not Use When
+
+- The task is small and already well-scoped.
+- The user only wants direct implementation.
+
+## Planning Rules
+
+- Do not implement while planning.
+- Ask only the missing questions that materially affect sequencing.
+- Prefer concrete phases over vague bullet dumps.
+- Include validation criteria so the plan is actionable.
+
+## Recommended Deliverable
+
+For broad tasks, prefer a plan document under `docs/` such as:
+
+- `docs/PLAN-auth-migration.md`
+- `docs/PLAN-admin-portal.md`
+- `docs/PLAN-dark-mode.md`
+
+The exact file name should reflect the task clearly.
+
+## Suggested Plan Structure
+
+```md
+## Plan
+
+### Goal
+- ...
+
+### Constraints
+- ...
+
+### Phases
+1. ...
+2. ...
+3. ...
+
+### Risks
+- ...
+
+### Verification
+- ...
+
+### Next Workflow
+- `$create` or `$enhance`
 ```
-CONTEXT:
-- User Request: $ARGUMENTS
-- Mode: PLANNING ONLY (no code)
-- Output: docs/PLAN-{task-slug}.md (dynamic naming)
 
-NAMING RULES:
-1. Extract 2-3 key words from request
-2. Lowercase, hyphen-separated
-3. Max 30 characters
-4. Example: "e-commerce cart" → PLAN-ecommerce-cart.md
+## Example Invocations
 
-RULES:
-1. Follow project-planner.md Phase -1 (Context Check)
-2. Follow project-planner.md Phase 0 (Socratic Gate)
-3. Create PLAN-{slug}.md with task breakdown
-4. DO NOT write any code files
-5. REPORT the exact file name created
+```text
+$plan migrate this app from REST to tRPC
+$plan build an internal admin portal
+$plan add multi-tenant auth to the current product
+$plan refactor the checkout flow safely
 ```
 
----
+## Final Rule
 
-## Expected Output
-
-| Deliverable | Location |
-|-------------|----------|
-| Project Plan | `docs/PLAN-{task-slug}.md` |
-| Task Breakdown | Inside plan file |
-| Agent Assignments | Inside plan file |
-| Verification Checklist | Phase X in plan file |
-
----
-
-## After Planning
-
-Tell user:
-```
-[OK] Plan created: docs/PLAN-{slug}.md
-
-Next steps:
-- Review the plan
-- Run `/create` to start implementation
-- Or modify plan manually
-```
-
----
-
-## Naming Examples
-
-| Request | Plan File |
-|---------|-----------|
-| `/plan e-commerce site with cart` | `docs/PLAN-ecommerce-cart.md` |
-| `/plan mobile app for fitness` | `docs/PLAN-fitness-app.md` |
-| `/plan add dark mode feature` | `docs/PLAN-dark-mode.md` |
-| `/plan fix authentication bug` | `docs/PLAN-auth-fix.md` |
-| `/plan SaaS dashboard` | `docs/PLAN-saas-dashboard.md` |
-
----
-
-## Usage
-
-```
-/plan e-commerce site with cart
-/plan mobile app for fitness tracking
-/plan SaaS dashboard with analytics
-```
+A good plan should make implementation easier tomorrow, not just look organized today.

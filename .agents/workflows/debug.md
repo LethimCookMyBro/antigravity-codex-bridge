@@ -1,103 +1,136 @@
 ---
-description: Debugging command. Activates DEBUG mode for systematic problem investigation.
+description: Enter a systematic debugging flow for investigation, evidence collection, and root-cause analysis.
 ---
 
-# /debug - Systematic Problem Investigation
+# $debug
 
 $ARGUMENTS
 
----
+Use this workflow when behavior is broken, inconsistent, flaky, or surprising and the next step should
+be investigation instead of guesswork.
 
 ## Purpose
 
-This command activates DEBUG mode for systematic investigation of issues, errors, or unexpected behavior.
+`$debug` exists to turn a vague bug report into a structured investigation with evidence, hypotheses,
+root cause, fix, and verification.
 
----
+## What This Workflow Does
 
-## Behavior
+1. Captures the symptom and the expected behavior.
+2. Collects reproduction details and project context.
+3. Forms hypotheses before changing code.
+4. Verifies each hypothesis with evidence.
+5. Explains root cause and confirms the fix.
 
-When `/debug` is triggered:
+## Use When
 
-1. **Gather information**
-   - Error message
-   - Reproduction steps
-   - Expected vs actual behavior
-   - Recent changes
+- The app returns errors or behaves unexpectedly.
+- Tests started failing and the cause is unclear.
+- A recent change introduced a regression.
+- The issue is intermittent or hard to reproduce.
 
-2. **Form hypotheses**
-   - List possible causes
-   - Order by likelihood
+## Do Not Use When
 
-3. **Investigate systematically**
-   - Test each hypothesis
-   - Check logs, data flow
-   - Use elimination method
+- The user already knows the exact fix and only wants it applied.
+- The request is architectural planning, not investigation.
 
-4. **Fix and prevent**
-   - Apply fix
-   - Explain root cause
-   - Add prevention measures
+## Helpful Tools and Skills
 
----
+- `debugger` agent
+- `explorer-agent`
+- `$systematic-debugging`
+- `$test`
+- `$status`
 
-## Output Format
+## Repo-Local Commands
 
-```markdown
-## 🔍 Debug: [Issue]
-
-### 1. Symptom
-[What's happening]
-
-### 2. Information Gathered
-- Error: `[error message]`
-- File: `[filepath]`
-- Line: [line number]
-
-### 3. Hypotheses
-1. ❓ [Most likely cause]
-2. ❓ [Second possibility]
-3. ❓ [Less likely cause]
-
-### 4. Investigation
-
-**Testing hypothesis 1:**
-[What I checked] → [Result]
-
-**Testing hypothesis 2:**
-[What I checked] → [Result]
-
-### 5. Root Cause
-🎯 **[Explanation of why this happened]**
-
-### 6. Fix
-```[language]
-// Before
-[broken code]
-
-// After
-[fixed code]
+```bash
+python3 .agents/scripts/session_manager.py status .
+python3 .agents/scripts/session_manager.py info .
+python3 .agents/scripts/checklist.py . --skip-performance
+bash .agents/scripts/run.sh
 ```
 
-### 7. Prevention
-🛡️ [How to prevent this in the future]
+## Recommended Flow
+
+### Phase 1: Capture the Symptom
+
+Record:
+
+- what is happening
+- what should happen instead
+- where it happens
+- whether it is reproducible
+
+### Phase 2: Gather Context
+
+Collect:
+
+- reproduction steps
+- recent changes
+- error messages
+- related files or services
+
+### Phase 3: Form Hypotheses
+
+Write down several plausible causes and order them by likelihood.
+
+### Phase 4: Test the Hypotheses
+
+- inspect logs
+- inspect data flow
+- isolate the failing step
+- compare expected vs actual state
+
+### Phase 5: Apply and Verify the Fix
+
+After the fix:
+
+- rerun the relevant test or check
+- verify the original symptom is gone
+- note any preventive follow-up such as tests or guardrails
+
+## Suggested Output
+
+```md
+## Debug Report
+
+### Symptom
+- ...
+
+### Reproduction
+- ...
+
+### Evidence
+- ...
+
+### Hypotheses
+1. ...
+2. ...
+3. ...
+
+### Root Cause
+- ...
+
+### Fix Applied
+- ...
+
+### Verification
+- ...
+
+### Prevention
+- ...
 ```
 
----
+## Example Invocations
 
-## Examples
-
-```
-/debug login not working
-/debug API returns 500
-/debug form doesn't submit
-/debug data not saving
+```text
+$debug login returns 500 after submit
+$debug preview server starts but the page stays blank
+$debug checkout tests started failing after refactor
+$debug API request hangs only in production mode
 ```
 
----
+## Final Rule
 
-## Key Principles
-
-- **Ask before assuming** - get full error context
-- **Test hypotheses** - don't guess randomly
-- **Explain why** - not just what to fix
-- **Prevent recurrence** - add tests, validation
+Do not call something the root cause until the observed behavior actually matches the evidence.
