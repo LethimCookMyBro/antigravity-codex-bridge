@@ -1,6 +1,6 @@
 {
   "name": "@lizmotia/ag-kit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Antigravity-inspired skills, agents, and workflows packaged for OpenAI Codex.",
   "license": "MIT",
   "type": "module",
@@ -16,9 +16,12 @@
   },
   "files": [
     ".agents/.shared/**/*.csv",
+    ".agents/.shared/**/*.md",
     ".agents/.shared/**/*.py",
     ".agents/agents/**/*.md",
+    ".agents/scripts/**/*.md",
     ".agents/scripts/**/*.py",
+    ".agents/scripts/**/*.sh",
     ".agents/skills/**/*.md",
     ".agents/skills/**/*.py",
     ".agents/skills/**/*.yaml",
@@ -26,6 +29,9 @@
     "bin/ag-codex.js",
     "AGENT_FLOW.md",
     "PUBLISHING.md",
+    "UPDATELIST.md",
+    "SKILLS_AND_WORKFLOWS.md",
+    "SKILLS_AND_WORKFLOWS_TH.md",
     "README.md",
     "README(th).md",
     "LICENSE"

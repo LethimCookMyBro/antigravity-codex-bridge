@@ -119,6 +119,12 @@ Use `update` when `.agents` is already installed and you want the latest package
 npx @lizmotia/ag-kit update
 ```
 
+If you just published a new package version and want to avoid stale `npx` cache, prefer:
+
+```bash
+npx @lizmotia/ag-kit@latest update
+```
+
 Global install equivalent:
 
 ```bash

@@ -119,6 +119,12 @@ $ui-ux-pro-max รีดีไซน์หน้า homepage
 npx @lizmotia/ag-kit update
 ```
 
+ถ้าเพิ่ง publish เวอร์ชันใหม่และอยากกันปัญหา `npx` cache ค้าง ให้ใช้:
+
+```bash
+npx @lizmotia/ag-kit@latest update
+```
+
 ถ้าติดตั้งแบบ global:
 
 ```bash
