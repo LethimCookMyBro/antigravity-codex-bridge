@@ -48,6 +48,7 @@ temp/
 .agents/preview.log
 .agents/preview.pid
 design-system/
+*.tgz
 
 # Publish only the Codex-facing package.
 # `.agent/` is kept locally as legacy source material and should not ship.
@@ -57,3 +58,14 @@ design-system/
 # The portable open-source package lives under `.agents/`.
 plugins/antigravity/
 .agents/plugins/
+
+# Local source repositories used to distill new skills.
+h4cker/
+awesome-design-md/
+
+# Local audit / scratch documents used during skill QA.
+H4CKER_CONVERSION_STATUS.md
+H4CKER_SKILL_PROMPT.md
+QA_H4CKER_SKILL_AUDIT.md
+REDTEAM_SKILL_DRYRUN_AUDIT.md
+SECURITY_ARCHITECT_AUDIT_ROUND2.md

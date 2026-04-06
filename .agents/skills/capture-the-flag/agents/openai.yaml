@@ -1,0 +1,4 @@
+interface:
+  display_name: "capture-the-flag"
+  short_description: "CTF and lab challenge triage that classifies artifacts and routes to the right analysis skill."
+  default_prompt: "Classify the challenge, inspect the artifacts, and recommend the next safe solving path."

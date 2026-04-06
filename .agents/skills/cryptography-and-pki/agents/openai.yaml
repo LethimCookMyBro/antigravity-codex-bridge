@@ -1,0 +1,4 @@
+interface:
+  display_name: "cryptography-and-pki"
+  short_description: "Review certificates, keys, CSRs, and live TLS posture with practical OpenSSL workflows and local audit helpers."
+  default_prompt: "Assess the PKI or TLS material, validate keys and certificates, and report defensive findings with concrete remediation steps."

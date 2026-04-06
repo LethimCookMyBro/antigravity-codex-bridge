@@ -1,0 +1,4 @@
+interface:
+  display_name: "dns-ownership-recon"
+  short_description: "Resolve DNS, enrich with whois, and flag likely cloud ownership with a low-noise local helper script."
+  default_prompt: "Investigate DNS and ownership clues for the target domain, keep the work passive, and summarize the strongest evidence clearly."

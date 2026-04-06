@@ -1,0 +1,4 @@
+interface:
+  display_name: "dfir"
+  short_description: "Investigate incidents with evidence-first DFIR triage, timeline building, IOC extraction, and reproducible artifacts."
+  default_prompt: "Review the provided evidence, correlate timelines and indicators, and produce a clear DFIR summary with validated findings and next actions."

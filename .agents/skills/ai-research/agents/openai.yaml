@@ -1,0 +1,4 @@
+interface:
+  display_name: "ai-research"
+  short_description: "AI security review for prompts, RAG, tools, connectors, and governance boundaries."
+  default_prompt: "Map the AI system surface, identify defensive risks, and return evidence-backed controls."

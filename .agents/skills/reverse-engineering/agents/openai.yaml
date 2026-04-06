@@ -1,0 +1,4 @@
+interface:
+  display_name: "reverse-engineering"
+  short_description: "Binary triage and static analysis for owned artifacts and challenge files."
+  default_prompt: "Analyze the binary structure, strings, and logic of the provided artifact and recommend the next analysis step."

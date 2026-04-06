@@ -1,0 +1,4 @@
+interface:
+  display_name: "ai-incident-log-analysis"
+  short_description: "Use a local helper script plus an OpenAI model to summarize logs, extract IOCs, and support incident-response triage."
+  default_prompt: "Review the provided logs, run the local AI log analysis helper if useful, validate the findings, and summarize the incident-response implications."

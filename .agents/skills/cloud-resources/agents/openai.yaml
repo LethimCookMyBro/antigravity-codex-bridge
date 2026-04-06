@@ -1,0 +1,4 @@
+interface:
+  display_name: "cloud-resources"
+  short_description: "Review cloud-hosted assets for ownership clues, logging coverage, and defensive visibility gaps across AWS, Azure, and GCP."
+  default_prompt: "Assess the cloud asset or domain, summarize ownership and logging evidence, and recommend concrete defensive next steps."

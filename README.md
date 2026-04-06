@@ -19,6 +19,18 @@ npm install -g @lizmotia/ag-kit
 ag-kit init
 ```
 
+Update an existing installation:
+
+```bash
+npx @lizmotia/ag-kit update
+```
+
+If you explicitly want to overwrite `.agents` with `init`, this is equivalent:
+
+```bash
+npx @lizmotia/ag-kit init --force
+```
+
 Local development path:
 
 ```bash
@@ -40,9 +52,9 @@ That bundle currently includes:
 | Component | Count | Purpose |
 |---------|------:|---------|
 | Agents | 20 | Specialist execution roles such as frontend, backend, security, QA, and planning |
-| Skills | 48 | Codex-readable guidance, patterns, checklists, and domain playbooks |
+| Skills | 96 | Codex-readable guidance, patterns, checklists, and domain playbooks |
 | Workflows | 11 | Entry workflows like `brainstorm`, `create`, `debug`, `plan`, and `test` |
-| Scripts | 4 | Shared helpers for verification, preview, checklist, and session tasks |
+| Scripts | 17 | Shared helpers for verification, preview, stale checks, health checks, load order, preview, checklist, and session tasks |
 
 ## Core Idea
 
@@ -71,6 +83,13 @@ $clean-code review this module before shipping
 $ui-ux-pro-max redesign the homepage
 ```
 
+If someone clones this repository directly, `.agents/` is already included. They only need to:
+
+1. Open the repo root in VS Code.
+2. Switch to the `CODEX` tab.
+3. Reload the window or run `Force reload skills`.
+4. Start invoking skills with `$`.
+
 ## CLI
 
 | Command | Description |
@@ -78,6 +97,7 @@ $ui-ux-pro-max redesign the homepage
 | `ag-kit init` | Install `.agents` into the current directory |
 | `ag-kit init --path ./my-project` | Install into a specific directory |
 | `ag-kit update` | Reinstall and overwrite the existing `.agents` folder |
+| `ag-kit init --force` | Overwrite an existing `.agents` installation during init |
 | `ag-kit status` | Show whether `.agents` is installed and summarize its contents |
 | `ag-kit help` | Show usage information |
 
@@ -90,6 +110,22 @@ The published npm package is:
 ```
 
 The repository also keeps `ag-codex` as a CLI alias for compatibility, but `ag-kit` is the primary command going forward.
+
+## Updating Existing Projects
+
+Use `update` when `.agents` is already installed and you want the latest package contents:
+
+```bash
+npx @lizmotia/ag-kit update
+```
+
+Global install equivalent:
+
+```bash
+ag-kit update
+```
+
+`init --force` is supported, but `update` is the clearer command for refreshes because it makes the overwrite behavior explicit.
 
 ## Repository Layout
 
@@ -122,6 +158,29 @@ The npm package is intentionally limited to the portable runtime:
 - `package.json`
 
 Local-only compatibility files are excluded from the published package.
+
+## GitHub Push Notes
+
+These files should ship:
+
+- `.agents/`
+- `bin/`
+- `README.md`
+- `README(th).md`
+- `AGENT_FLOW.md`
+- `PUBLISHING.md`
+- `LICENSE`
+- `package.json`
+- `.npmignore`
+
+These should stay local-only and are ignored:
+
+- `.agent/`
+- `plugins/`
+- `.agents/plugins/`
+- `h4cker/`
+- `awesome-design-md/`
+- local audit and scratch reports
 
 ## Docs
 

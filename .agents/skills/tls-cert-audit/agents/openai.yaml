@@ -1,0 +1,4 @@
+interface:
+  display_name: "tls-cert-audit"
+  short_description: "Inspect TLS certificate metadata, SAN coverage, and weak-cipher acceptance with a local audit helper."
+  default_prompt: "Audit the target certificate and TLS posture, explain the results clearly, and suggest defensive next steps."

@@ -23,6 +23,18 @@ npm install -g @lizmotia/ag-kit
 ag-kit init
 ```
 
+Recommended refresh flow for projects that already contain `.agents`:
+
+```bash
+npx @lizmotia/ag-kit update
+```
+
+Equivalent overwrite flow:
+
+```bash
+npx @lizmotia/ag-kit init --force
+```
+
 Compatibility alias:
 
 ```bash
@@ -101,9 +113,9 @@ Current portable bundle size:
 | Component | Count |
 |----------|------:|
 | Agents | 20 |
-| Skills | 48 |
+| Skills | 96 |
 | Workflows | 11 |
-| Scripts | 4 |
+| Scripts | 17 |
 
 ## Workflow Layer
 
@@ -207,6 +219,7 @@ The goal is not to spawn agents by default. The goal is to use the lightest exec
 
 - `ag-kit init`
 - `ag-kit update`
+- `ag-kit init --force`
 - `ag-kit status`
 - `ag-kit help`
 

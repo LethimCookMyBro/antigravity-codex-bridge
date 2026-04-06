@@ -1,0 +1,4 @@
+interface:
+  display_name: "web-application-testing"
+  short_description: "Authorized web testing with low-noise validation, evidence capture, and handoff-ready findings."
+  default_prompt: "Test the scoped web targets, capture evidence, and return validated findings plus safe next steps."

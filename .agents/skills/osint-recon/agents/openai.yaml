@@ -1,0 +1,4 @@
+interface:
+  display_name: "osint-recon"
+  short_description: "Authorized passive recon and public-source asset mapping for domains, identities, and exposed web surface."
+  default_prompt: "Use passive OSINT and public-source enumeration to map the target footprint, collect evidence, and recommend safe next steps."

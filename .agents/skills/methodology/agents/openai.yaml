@@ -1,0 +1,4 @@
+interface:
+  display_name: "methodology"
+  short_description: "Phased security assessment planning with scope gates, evidence requirements, and clean handoffs."
+  default_prompt: "Turn the security request into a phased plan with clear handoffs, evidence requirements, and stop conditions."

@@ -1,10 +1,27 @@
 ---
+skill: python-patterns
 name: python-patterns
+version: 1.0.0
+source: codex/python-patterns
+last_updated: 2026-04-06
+reviewed_by: Codex
+next_review: 2026-07-05
+load_priority: 5
+depends_on: []
+os_support: [kali, ubuntu, parrot]
 description: Python development principles and decision-making. Framework selection, async patterns, type hints, project structure. Teaches thinking, not copying.
 allowed-tools: Read, Write, Edit, Glob, Grep
 ---
-
 # Python Patterns
+
+Summary: Python development principles and decision-making. Framework selection, async patterns, type hints, project structure. Teaches thinking, not copying.
+Does NOT cover unapproved live-target actions, unauthorized access, or unverified assumptions.
+## WHEN TO USE THIS SKILL
+
+- Use when the task clearly matches `python-patterns` or the folder's specialized domain
+- Use when Codex should follow a repeatable workflow instead of ad-hoc reasoning
+- Use when the output should separate scope, evidence, findings, and next actions
+
 
 > Python development principles and decision-making for 2025.
 > **Learn to THINK, not memorize patterns.**
@@ -126,9 +143,9 @@ Can skip:
 ### Common Type Patterns
 
 ```python
-# These are patterns, understand them:
+# Understand these patterns before choosing one:
 
-# Optional → might be None
+# Optional → may be None
 from typing import Optional
 def find_user(id: int) -> Optional[User]: ...
 
@@ -439,3 +456,63 @@ Before implementing:
 ---
 
 > **Remember**: Python patterns are about decision-making for YOUR specific context. Don't copy code—think about what serves your application best.
+
+
+
+## OUTPUT FORMAT
+
+- Return:
+  - `Scope`
+  - `Evidence`
+  - `Findings`
+  - `Artifacts`
+  - `Next Actions`
+- Name any generated files by exact path so the next reviewer does not have to rediscover them.
+
+## Starter Commands
+
+Run these first to capture the current workspace before applying the rest of the skill.
+
+```bash
+mkdir -p python-patterns-output
+pwd > python-patterns-output/pwd.txt
+rg --files . | head -200 > python-patterns-output/repo-files.txt
+git status --short > python-patterns-output/git-status.txt 2>/dev/null || true
+```
+
+## Quick Mode (< 5 minutes)
+
+- Start with the first scope or inventory command, not the whole workflow.
+- Limit the first pass to one host, one file, one repo, or one artifact set.
+- Stop after you have one saved artifact and a short findings draft.
+
+
+## Troubleshooting / Fallback
+
+- If the primary tool is missing, use the repo-local helper script or the simplest shell fallback already shown in the skill.
+- If the target blocks, errors, or returns nothing, capture the raw error output and narrow the scope before retrying.
+- If the dataset is too large, split by host, file, or time window before rerunning the skill.
+- Edge case 1: the source format is custom or incomplete; save a sample and document the gap.
+- Edge case 2: the work depends on a non-default port, path, or encoding; record it before rerunning commands.
+
+
+## Phase Output Map
+
+- Phase 1 output: a scoped starting artifact such as an inventory file, target file, or working directory.
+- Phase 2 output: one or more evidence files captured from the main validation step.
+- Phase 3 output: a short findings set or structured artifact ready for review or handoff.
+
+
+## Done When
+
+- Scope is fixed and written down.
+- At least one reproducible artifact is saved.
+- The next skill or teammate can continue without re-discovering context.
+
+
+
+- Load the next narrower or downstream skill only after saving artifacts from this one.
+
+## Next: load the next specialized skill
+
+- Load the next narrower or downstream skill only after saving artifacts from this one.

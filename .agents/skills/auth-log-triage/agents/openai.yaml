@@ -1,0 +1,4 @@
+interface:
+  display_name: "auth-log-triage"
+  short_description: "Investigate auth.log activity with grep, awk, and Python correlation for users, failures, IPs, and sudo activity."
+  default_prompt: "Review Linux authentication logs, correlate users and source IPs, surface suspicious patterns, and return evidence-backed findings."

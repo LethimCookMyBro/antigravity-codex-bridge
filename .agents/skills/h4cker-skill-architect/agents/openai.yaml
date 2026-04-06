@@ -1,0 +1,4 @@
+interface:
+  display_name: "h4cker-skill-architect"
+  short_description: "Convert dense h4cker folders into concise, Codex-ready SKILL.md files."
+  default_prompt: "Read the selected h4cker folder, extract the core commands and techniques, and distill it into a compact Codex skill."

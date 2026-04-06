@@ -1,0 +1,4 @@
+interface:
+  display_name: "threat-hunting"
+  short_description: "Hypothesis-driven threat hunting across logs and telemetry with evidence-backed pivots."
+  default_prompt: "Hunt across the provided telemetry, correlate the results, and return confidence-rated findings."

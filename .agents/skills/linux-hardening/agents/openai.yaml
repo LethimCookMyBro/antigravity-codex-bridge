@@ -1,0 +1,4 @@
+interface:
+  display_name: "linux-hardening"
+  short_description: "Review Linux compromise indicators, integrity, firewall posture, and baseline hardening controls with concrete defensive checks."
+  default_prompt: "Assess the Linux host for compromise indicators and hardening gaps, then return prioritized defensive actions with supporting evidence."

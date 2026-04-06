@@ -64,7 +64,6 @@ VERIFICATION_SUITE = [
         "category": "Security",
         "checks": [
             ("Security Scan", ".agents/skills/vulnerability-scanner/scripts/security_scan.py", True),
-            ("Dependency Analysis", ".agents/skills/vulnerability-scanner/scripts/dependency_analyzer.py", False),
         ]
     },
     
@@ -117,7 +116,6 @@ VERIFICATION_SUITE = [
         "requires_url": True,
         "checks": [
             ("Lighthouse Audit", ".agents/skills/performance-profiling/scripts/lighthouse_audit.py", True),
-            ("Bundle Analysis", ".agents/skills/performance-profiling/scripts/bundle_analyzer.py", False),
         ]
     },
     

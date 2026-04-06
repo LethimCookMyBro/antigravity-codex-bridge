@@ -1,0 +1,4 @@
+interface:
+  display_name: "packet-capture-lab"
+  short_description: "Use Scapy and PyShark for authorized packet capture, pcap review, and tightly scoped protocol validation."
+  default_prompt: "Capture or inspect packets in a lab or owned environment, preserve artifacts, and explain the findings with safe next steps."

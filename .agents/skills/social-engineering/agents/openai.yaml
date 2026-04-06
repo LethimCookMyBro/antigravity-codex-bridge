@@ -1,0 +1,4 @@
+interface:
+  display_name: "social-engineering"
+  short_description: "Defensive review of social-engineering risk, trust surfaces, and awareness gaps."
+  default_prompt: "Analyze public trust surfaces and return awareness-focused risks and controls without producing deceptive content."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "cracking-passwords"
+  short_description: "Defensive triage of password hashes, formats, and storage quality without cracking workflows."
+  default_prompt: "Identify the provided hash, explain its parameters, and recommend safe defensive next steps."

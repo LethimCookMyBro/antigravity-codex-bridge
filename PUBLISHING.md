@@ -12,6 +12,12 @@ After publish, the intended install flow is:
 npx @lizmotia/ag-kit init
 ```
 
+To refresh an existing installation:
+
+```bash
+npx @lizmotia/ag-kit update
+```
+
 Or:
 
 ```bash
@@ -49,4 +55,5 @@ After publish, verify with:
 ```bash
 npm view @lizmotia/ag-kit version
 npx @lizmotia/ag-kit init
+npx @lizmotia/ag-kit update
 ```

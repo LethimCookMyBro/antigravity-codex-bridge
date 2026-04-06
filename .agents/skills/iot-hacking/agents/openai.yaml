@@ -1,0 +1,4 @@
+interface:
+  display_name: "iot-hacking"
+  short_description: "Authorized IoT and OT exposure review for devices, firmware, and industrial endpoints."
+  default_prompt: "Inventory the device or firmware safely, capture service and version clues, and recommend defensive next steps."

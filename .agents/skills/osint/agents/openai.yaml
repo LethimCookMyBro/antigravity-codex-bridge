@@ -1,0 +1,4 @@
+interface:
+  display_name: "osint"
+  short_description: "Public-source intelligence gathering for domains, identities, and documents with evidence-first reporting."
+  default_prompt: "Collect public-source evidence, build an entity map, and return safe downstream handoff points."

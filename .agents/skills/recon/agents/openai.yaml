@@ -1,0 +1,4 @@
+interface:
+  display_name: "recon"
+  short_description: "Authorized low-noise recon that builds a clean target inventory for downstream testing."
+  default_prompt: "Map the scoped target surface, keep validation low-noise, and return a handoff-ready target inventory."
