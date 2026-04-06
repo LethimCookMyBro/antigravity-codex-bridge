@@ -52,7 +52,7 @@ That bundle currently includes:
 | Component | Count | Purpose |
 |---------|------:|---------|
 | Agents | 20 | Specialist execution roles such as frontend, backend, security, QA, and planning |
-| Skills | 96 | Codex-readable guidance, patterns, checklists, and domain playbooks |
+| Skills | 96 top-level / 106 total SKILL files | Codex-readable guidance, patterns, checklists, and domain playbooks |
 | Workflows | 11 | Entry workflows like `brainstorm`, `create`, `debug`, `plan`, and `test` |
 | Scripts | 17 | Shared helpers for verification, preview, stale checks, health checks, load order, preview, checklist, and session tasks |
 
@@ -140,6 +140,8 @@ ag-kit update
 |-- bin/ag-codex.js
 |-- AGENT_FLOW.md
 |-- PUBLISHING.md
+|-- SKILLS_AND_WORKFLOWS.md
+|-- SKILLS_AND_WORKFLOWS_TH.md
 |-- README.md
 `-- README(th).md
 ```
@@ -152,6 +154,9 @@ The npm package is intentionally limited to the portable runtime:
 - `bin/`
 - `AGENT_FLOW.md`
 - `PUBLISHING.md`
+- `UPDATELIST.md`
+- `SKILLS_AND_WORKFLOWS.md`
+- `SKILLS_AND_WORKFLOWS_TH.md`
 - `README.md`
 - `README(th).md`
 - `LICENSE`
@@ -167,6 +172,9 @@ These files should ship:
 - `bin/`
 - `README.md`
 - `README(th).md`
+- `UPDATELIST.md`
+- `SKILLS_AND_WORKFLOWS.md`
+- `SKILLS_AND_WORKFLOWS_TH.md`
 - `AGENT_FLOW.md`
 - `PUBLISHING.md`
 - `LICENSE`
@@ -186,6 +194,9 @@ These should stay local-only and are ignored:
 
 - [Agent Flow](./AGENT_FLOW.md)
 - [Publishing Guide](./PUBLISHING.md)
+- [Update List](./UPDATELIST.md)
+- [Skills and Workflows Catalog](./SKILLS_AND_WORKFLOWS.md)
+- [Skills and Workflows Catalog (Thai)](./SKILLS_AND_WORKFLOWS_TH.md)
 
 ## License
 
